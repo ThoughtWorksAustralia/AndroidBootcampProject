@@ -3,7 +3,7 @@ AndroidBootcampProject
 
 Treasure Hunt game app for ThoughtWorks' Android Bootcamp
 
-#Pre-Bootcamp Preparation
+##Pre-Bootcamp Preparation
 
 Follow these setup steps before the first session:
 
