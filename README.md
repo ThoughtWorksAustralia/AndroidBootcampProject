@@ -51,7 +51,7 @@ Goal: Complete the game with a map of actual vs found Treasure locations. Genera
 
 ## Resources
 ### Android in General
-[Android Developers site](http://developer.android.com/develop/index.html)
+[Android Developers site](http://developer.android.com/develop/index.html)  
 [The Busy Coder's Guide to Android Development](http://commonsware.com/Android/)
 
 ###Genymotion

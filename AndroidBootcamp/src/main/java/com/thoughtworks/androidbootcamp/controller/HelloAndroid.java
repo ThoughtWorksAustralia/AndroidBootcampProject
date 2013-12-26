@@ -1,9 +1,10 @@
-package com.thoughtworks.androidbootcamp;
+package com.thoughtworks.androidbootcamp.controller;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.thoughtworks.androidbootcamp.R;
 
 public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -23,6 +26,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("lifecycle", "HelloAndroid onCreate");
         setContentView(R.layout.activity_hello);
 
         // Set up the action bar to show a dropdown list.
@@ -43,6 +47,42 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
                                 getString(R.string.title_section3),
                         }),
                 this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("lifecycle", "HelloAndroid onStop");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("lifecycle", "HelloAndroid onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("lifecycle", "HelloAndroid onPause");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("lifecycle", "HelloAndroid onDestroy");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("lifecycle", "HelloAndroid onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("lifecycle", "HelloAndroid onRestart");
     }
 
     @Override
