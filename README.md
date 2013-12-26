@@ -53,6 +53,7 @@ Goal: Complete the game with a map of actual vs found Treasure locations. Genera
 ### Android in General
 [Android Developers site](http://developer.android.com/develop/index.html)  
 [The Busy Coder's Guide to Android Development](http://commonsware.com/Android/)
+[Saving and retrieving instance state](http://www.intertech.com/Blog/saving-and-retrieving-android-instance-state-part-1/)
 
 ###Genymotion
 [Genymotion Users Guide](https://cloud.genymotion.com/page/doc/)
