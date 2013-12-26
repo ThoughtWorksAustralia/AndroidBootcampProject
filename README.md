@@ -1,9 +1,13 @@
 AndroidBootcampProject
 ======================
 
-Treasure Hunt game app for ThoughtWorks' Android Bootcamp
+## Objectives
+To teach Java programmers the basics of Android development using Agile best practices, by incrementally developing a small game over a period of six weeks.
 
-##Pre-Bootcamp Preparation
+## The App: Treasure Hunt
+A single player game. The app supplies a list of photos of 'treasures' in your local area, with hints on how to find them. Your job is to run (or stroll) around the area to find each treasure and take a photo of it. Points are awarded according to how many treasures you can locate, how long you take, and how close you were to the original photo location.
+
+## Pre-Bootcamp Preparation
 
 Follow these setup steps before the first session:
 
@@ -25,3 +29,24 @@ Follow these setup steps before the first session:
     1. Search for Genymotion
     1. Choose Download and Install from the context menu
   1. Open the Genymotion app and create a new virtual device
+
+## Week 1: Hello Android
+Goal: Develop a working "hello world" app and explore its anatomy.
+
+## Week 2: TDD with Android
+Goal: Add a framework for test driven development including a unit test and a functional test
+
+## Week 3: Layout and Design
+Goal: Display a list of Treasures (from a provided file)
+
+## Week 4: Using the Hardware
+Goal: Take a photo of a found Treasure. Evaluate its proximity to the listed Treasure
+
+## Week 5: Data & Communication
+Goal: Retrieve a real list of Treasures from a server
+
+## Week 6: Google APIs
+Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
+
+## Resources
+[Android]
