@@ -32,6 +32,7 @@ Follow these setup steps before the first session:
 
 ## Week 1: Hello Android
 Goal: Develop a working "hello world" app and explore its anatomy.
+[View the Presentation](http://prezi.com/jibn_vzm9rml/?utm_campaign=share&utm_medium=copy)
 
 ## Week 2: TDD with Android
 Goal: Add a framework for test driven development including a unit test and a functional test
@@ -49,4 +50,9 @@ Goal: Retrieve a real list of Treasures from a server
 Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ## Resources
-[Android]
+### Android in General
+[Android Developers site](http://developer.android.com/develop/index.html)
+[The Busy Coder's Guide to Android Development](http://commonsware.com/Android/)
+
+###Genymotion
+[Genymotion Users Guide](https://cloud.genymotion.com/page/doc/)
