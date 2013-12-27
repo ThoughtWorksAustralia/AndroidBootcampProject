@@ -14,13 +14,21 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".controller.HelloAndroid"
+            android:name="com.thoughtworks.androidbootcamp.controller.HelloAndroid"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.thoughtworks.androidbootcamp.controller.WhoAmIActivity"
+            android:label="@string/title_activity_who_am_i"
+            android:parentActivityName="com.thoughtworks.androidbootcamp.controller.HelloAndroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.thoughtworks.androidbootcamp.controller.HelloAndroid" />
         </activity>
     </application>
 
