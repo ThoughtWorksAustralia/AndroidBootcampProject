@@ -3,6 +3,7 @@ package com.thoughtworks.androidbootcamp.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -16,6 +17,7 @@ public class WhoAmIActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whoami);
+        Log.d("lifecycle", "WhoAmI onCreate");
     }
 
     public void returnPlayer(View view) {
@@ -32,5 +34,42 @@ public class WhoAmIActivity extends ActionBarActivity {
         View playerField = findViewById(R.id.player_field);
         return ((EditText) playerField).getText().toString();
     }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("lifecycle", "WhoAmI onStop");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("lifecycle", "WhoAmI onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("lifecycle", "WhoAmI onPause");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("lifecycle", "WhoAmI onDestroy");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("lifecycle", "WhoAmI onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("lifecycle", "WhoAmI onRestart");
+    }
+
 
 }
