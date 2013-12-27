@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,11 +6,25 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".WhoAmIActivity$PlaceholderFragment">
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
+        android:id="@+id/player_label"
+        android:layout_marginBottom="@dimen/default_inter_row_spacing"
+        android:text="@string/player_label"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/player_field"
+        android:layout_marginBottom="@dimen/default_inter_row_spacing"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:inputType="textPersonName" />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/ok"
+        android:onClick="returnPlayer"/>
 
-</RelativeLayout>
+</LinearLayout>
