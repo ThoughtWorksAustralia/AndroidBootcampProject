@@ -24,6 +24,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private static final String STATE_GAME = "game_state";
     private static final int PROMPT_FOR_PLAYER = 1000;
     private Game mGame;
 
@@ -51,8 +52,9 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
                                 getString(R.string.title_section3),
                         }),
                 this);
-
-        promptForPlayer();
+        if (savedInstanceState == null) {
+            promptForPlayer();
+        }
     }
 
     private void promptForPlayer() {
@@ -73,6 +75,10 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
 
     private void createGame(String player) {
         mGame = new Game(player);
+        welcomePlayer();
+    }
+
+    private void welcomePlayer() {
         TextView welcome = (TextView) findViewById(R.id.welcome_player);
         welcome.setText("Welcome " + mGame.getPlayer() + "!");
     }
@@ -120,6 +126,10 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
             getSupportActionBar().setSelectedNavigationItem(
                     savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
         }
+        if (savedInstanceState.containsKey(STATE_GAME)) {
+            mGame = (Game) savedInstanceState.getSerializable(STATE_GAME);
+            welcomePlayer();
+        }
     }
 
     @Override
@@ -127,6 +137,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
         // Serialize the current dropdown position.
         outState.putInt(STATE_SELECTED_NAVIGATION_ITEM,
                 getSupportActionBar().getSelectedNavigationIndex());
+        outState.putSerializable(STATE_GAME, mGame);
     }
 
 

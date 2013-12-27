@@ -1,6 +1,8 @@
 package com.thoughtworks.androidbootcamp.model;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
     private String player;
 
     public Game(String player) {
