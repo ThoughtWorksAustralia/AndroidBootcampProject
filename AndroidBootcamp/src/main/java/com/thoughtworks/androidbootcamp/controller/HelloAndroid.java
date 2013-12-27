@@ -1,5 +1,6 @@
 package com.thoughtworks.androidbootcamp.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.thoughtworks.androidbootcamp.R;
+import com.thoughtworks.androidbootcamp.model.Game;
 
 public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -22,6 +24,8 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private static final int PROMPT_FOR_PLAYER = 1000;
+    private Game mGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +45,36 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
                         actionBar.getThemedContext(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
-                        new String[] {
+                        new String[]{
                                 getString(R.string.title_section1),
                                 getString(R.string.title_section2),
                                 getString(R.string.title_section3),
                         }),
                 this);
+
+        promptForPlayer();
+    }
+
+    private void promptForPlayer() {
+        Intent i = new Intent(this, WhoAmIActivity.class);
+        startActivityForResult(i, PROMPT_FOR_PLAYER);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PROMPT_FOR_PLAYER) {
+            if (resultCode == RESULT_OK) {
+                String player = data.getStringExtra(WhoAmIActivity.PLAYER_DATA);
+                createGame(player);
+            }
+        }
+    }
+
+    private void createGame(String player) {
+        mGame = new Game(player);
+        TextView welcome = (TextView) findViewById(R.id.welcome_player);
+        welcome.setText("Welcome " + mGame.getPlayer() + "!");
     }
 
     @Override
@@ -104,7 +132,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.hello_android, menu);
         return true;
