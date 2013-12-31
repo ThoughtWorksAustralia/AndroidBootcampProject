@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="espresso-1.0-SNAPSHOT-bundled">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AndroidBootcamp/src/instrumentTest/libs/espresso-1.0-SNAPSHOT-bundled.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
