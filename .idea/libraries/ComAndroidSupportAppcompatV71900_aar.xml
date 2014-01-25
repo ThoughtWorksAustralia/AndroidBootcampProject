@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="ComAndroidSupportAppcompatV71900.aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res" />
+      <root url="jar://$PROJECT_DIR$/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
