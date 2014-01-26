@@ -4,6 +4,8 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
+import com.thoughtworks.androidbootcamp.test.helpers.Given;
+import com.thoughtworks.androidbootcamp.test.helpers.When;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
@@ -37,4 +39,30 @@ public class HelloAndroidTest extends ActivityInstrumentationTestCase2<HelloAndr
 
         onView(withId(R.id.welcome_player)).check(matches(withText(containsString("Fred"))));
     }
+
+    public void testTreasureList() throws InterruptedException {
+        Given.thePlayerHasEnteredTheirName();
+
+        When.iOpenTheMenuAndSelectItem("Treasure List");
+
+        onView(withId(R.id.section_label)).check(matches(withText(containsString("Find these treasures:"))));
+    }
+
+    public void testHighScores() throws InterruptedException {
+        Given.thePlayerHasEnteredTheirName();
+
+        When.iOpenTheMenuAndSelectItem("High Scores");
+
+        onView(withId(R.id.section_label)).check(matches(withText(containsString("High Scores:"))));
+    }
+
+    public void testMap() throws InterruptedException {
+        Given.thePlayerHasEnteredTheirName();
+
+        When.iOpenTheMenuAndSelectItem("Map");
+
+        onView(withId(R.id.section_label)).check(matches(withText(containsString("Map:"))));
+    }
+
+
 }
