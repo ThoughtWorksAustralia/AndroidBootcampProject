@@ -1,1 +1,1 @@
-include ':AndroidBootcamp'
+include ':AndroidBootcamp', ':AndroidBootcampTest'
