@@ -54,8 +54,7 @@ Goals:
 [Part 2](https://github.com/macosgrove/AndroidBootcampProject/commit/6a10373f167e709c907797aa00953ee899bd8ed2)  
 [Exercise 3: Add new behavioural tests](https://github.com/macosgrove/AndroidBootcampProject/commit/ff41e46f18da9ab904607f62a766368459b78db2)
 [Exercise 4: Add Unit Tests](https://github.com/macosgrove/AndroidBootcampProject/commit/816cc9f7dc56a3d3d09b040891992d336f6bc277)  
-[Reference: Gradle Android Test Plugin](https://github.com/novoda/gradle-android-test-plugin)  
-[Reference: How to fix “!!! JUnit version 3.8 or later expected:”](http://kostyay.name/android-studio-robolectric-gradle-getting-work/)
+[Step by step instructions](https://github.com/macosgrove/AndroidBootcampProject/blob/master/BDDinAS.md)
 
 ## Week 3: Layout and Design
 Goal: Display a list of Treasures (from a provided file)
