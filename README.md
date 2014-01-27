@@ -52,6 +52,10 @@ Goals:
 [Exercise 1: Create a failing instrument test](https://github.com/macosgrove/AndroidBootcampProject/commit/9f5d25952ac48d4e6c9ea5a0345c1ece2c43ddae)  
 [Exercise 2: Add Espresso to the test Part 1](https://github.com/macosgrove/AndroidBootcampProject/commit/5d137c44445bdcc97bb02a53246a3fe6f44a1915),
 [Part 2](https://github.com/macosgrove/AndroidBootcampProject/commit/6a10373f167e709c907797aa00953ee899bd8ed2)  
+[Exercise 3: Add new behavioural tests](https://github.com/macosgrove/AndroidBootcampProject/commit/ff41e46f18da9ab904607f62a766368459b78db2)
+[Exercise 4: Add Unit Tests](https://github.com/macosgrove/AndroidBootcampProject/commit/816cc9f7dc56a3d3d09b040891992d336f6bc277)  
+[Reference: Gradle Android Test Plugin](https://github.com/novoda/gradle-android-test-plugin)  
+[Reference: How to fix “!!! JUnit version 3.8 or later expected:”](http://kostyay.name/android-studio-robolectric-gradle-getting-work/)
 
 ## Week 3: Layout and Design
 Goal: Display a list of Treasures (from a provided file)
