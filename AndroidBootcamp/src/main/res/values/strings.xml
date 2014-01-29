@@ -2,12 +2,15 @@
 <resources>
 
     <string name="app_name">AndroidBootcamp</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Treasure List</string>
+    <string name="title_section2">High Scores</string>
+    <string name="title_section3">Map</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_who_am_i">Who Am I</string>
     <string name="player_label">What is your name?</string>
     <string name="ok">OK</string>
+    <string name="treasure_heading">Find these treasures:</string>
+    <string name="scores_heading">High Scores:</string>
+    <string name="map_heading">Map:</string>
 
 </resources>

@@ -162,22 +162,38 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 1:
+                    showTreasureList(rootView);
+                    break;
+                case 2:
+                    showHighScores(rootView);
+                    break;
+                case 3:
+                    showMap(rootView);
+                    break;
+                default:
+            }
             return rootView;
         }
 
-        protected void showTreasureList(View view) {
-
+        protected void showTreasureList(View rootView) {
+            setHeading(rootView, R.string.treasure_heading);
         }
 
-        protected void showHighScores(View view) {
-
+        protected void showHighScores(View rootView) {
+            setHeading(rootView, R.string.scores_heading);
         }
 
-        protected void showMap(View view) {
-
+        protected void showMap(View rootView) {
+            setHeading(rootView, R.string.map_heading);
         }
+
+        private void setHeading(View rootView, int stringId) {
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(stringId);
+        }
+
     }
 
 }
