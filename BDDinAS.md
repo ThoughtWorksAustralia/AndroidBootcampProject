@@ -25,3 +25,9 @@ At this stage, running the tests within AS results in
 6. Created a new run configuration for gradle. Set task to compileTestDebugJava. Added it to the 'before launch' part of the JUnit test run configuration. At this stage, the test and compile run in parallel and the compile finishes after the test finishes so you still get the class not found exception if the project has been cleaned.
 7. Moved the compile run configuration to before the Make in the 'before launch'. Now the test works!
 8. Made the same changes to the Default JUnit run configuration so future tests would run correctly.
+9. At this stage simple tests work but Robolectric can't create any views as it doesn't know where to find the resources.
+Created Robolectric configuration file org.robolectric.Config.properties under src/test/resources and added the folder to the classpath in the run configurations.
+10. Robolectric still can't find the Android resources in ```/Users/macosgrove/AndroidStudioProjects/AndroidBootcampProject/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res```
+Result is this:
+```java.lang.RuntimeException: huh? can't find parent for StyleData{name='AppTheme', parent='Theme_AppCompat_Light_DarkActionBar'}```
+Temporary workaround is removing ```android:theme="@style/AppTheme"``` from the AndroidManifest until I find a proper solution.
