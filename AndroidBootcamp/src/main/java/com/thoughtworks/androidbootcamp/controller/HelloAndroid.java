@@ -166,6 +166,18 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
+
+        protected void showTreasureList(View view) {
+
+        }
+
+        protected void showHighScores(View view) {
+
+        }
+
+        protected void showMap(View view) {
+
+        }
     }
 
 }
