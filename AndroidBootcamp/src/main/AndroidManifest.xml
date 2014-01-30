@@ -14,7 +14,8 @@
         android:label="@string/app_name" >
         <activity
             android:name="com.thoughtworks.androidbootcamp.controller.HelloAndroid"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,8 @@
         <activity
             android:name="com.thoughtworks.androidbootcamp.controller.WhoAmIActivity"
             android:label="@string/title_activity_who_am_i"
-            android:parentActivityName="com.thoughtworks.androidbootcamp.controller.HelloAndroid" >
+            android:parentActivityName="com.thoughtworks.androidbootcamp.controller.HelloAndroid"
+            android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.thoughtworks.androidbootcamp.controller.HelloAndroid" />
