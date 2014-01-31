@@ -27,7 +27,7 @@ At this stage, running the tests within AS results in
 8. Made the same changes to the Default JUnit run configuration so future tests would run correctly.
 9. At this stage simple tests work but Robolectric can't create any views as it doesn't know where to find the resources.
 Created Robolectric configuration file org.robolectric.Config.properties under src/test/resources and added the folder to the classpath in the run configurations.
-10. Robolectric still can't find the Android resources in ```/Users/macosgrove/AndroidStudioProjects/AndroidBootcampProject/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res```
-Result is this:
+10. Robolectric still can't find the Android resources in ```/Users/macosgrove/AndroidStudioProjects/AndroidBootcampProject/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res```  
+Result is this:  
 ```java.lang.RuntimeException: huh? can't find parent for StyleData{name='AppTheme', parent='Theme_AppCompat_Light_DarkActionBar'}```
-Temporary workaround is removing ```android:theme="@style/AppTheme"``` from the AndroidManifest until I find a proper solution.
+Hacky solution is removing ```android:theme="@style/AppTheme"``` from the ```<application>``` level of the AndroidManifest and putting it at the ```<activity>``` level for each activity.  
