@@ -9,7 +9,7 @@ A single player game. The app supplies a list of photos of 'treasures' in your l
 
 ## Pre-Bootcamp Preparation
 
-Follow these setup steps before the first session:
+Follow these setup steps before your first session:
 
 1. Install [Java SE SDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if you don't have it
 1. Download and install [Android Studio](http://tools.android.com/download/studio/canary)
@@ -19,6 +19,7 @@ Follow these setup steps before the first session:
   1. Enter activity_hello as the layout name
   1. Change the Package Name to com.thoughtworks.androidbootcamp or something that's relevant to you. Note that a device can carry only one application from any given package, and the Google Play store will only list one application per package.
   1. Select Navigation Type: Action Bar Spinner
+1. If you previously had a version of Android installed on your machine, you may need to use Android's [SDK manager](http://developer.android.com/tools/help/sdk-manager.html) to install Build Tools v19.
 1. (Optional) Download and install [Genymotion](https://cloud.genymotion.com/page/launchpad/download/)
   1. Create an account on the [Genymotion cloud](https://cloud.genymotion.com/page/customer/login/)
   1. (Mac only) Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
@@ -55,9 +56,9 @@ Goals:
 [Exercise 3: Add new behavioural tests](https://github.com/macosgrove/AndroidBootcampProject/commit/ff41e46f18da9ab904607f62a766368459b78db2)  
 [Exercise 4: Add Unit Tests Part 1](https://github.com/macosgrove/AndroidBootcampProject/commit/816cc9f7dc56a3d3d09b040891992d336f6bc277)
 [Part 2](https://github.com/macosgrove/AndroidBootcampProject/commit/527d923d5f9d0fe8072422b72c56ba01ee9e5d1c) 
-[Part 3](https://github.com/macosgrove/AndroidBootcampProject/commit/0549ce579badab5c61b150f71b7bfd0faaf36243)
-[Exercise 5: Make the tests pass](https://github.com/macosgrove/AndroidBootcampProject/commit/9ef2627ff2e6e40b4d526ba604aadba9bbf128e9) 
-[Step by step instructions](https://github.com/macosgrove/AndroidBootcampProject/blob/master/BDDinAS.md)
+[Part 3](https://github.com/macosgrove/AndroidBootcampProject/commit/0549ce579badab5c61b150f71b7bfd0faaf36243)  
+[Step by step instructions](https://github.com/macosgrove/AndroidBootcampProject/blob/master/BDDinAS.md)  
+[Exercise 5: Make the tests pass](https://github.com/macosgrove/AndroidBootcampProject/commit/9ef2627ff2e6e40b4d526ba604aadba9bbf128e9)  
 
 ## Week 3: Layout and Design
 Goal: Display a list of Treasures (from a provided file)
