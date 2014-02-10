@@ -81,3 +81,6 @@ Goal: Complete the game with a map of actual vs found Treasure locations. Genera
 
 ###Genymotion
 [Genymotion Users Guide](https://cloud.genymotion.com/page/doc/)
+
+###Testing
+[Testing the Android Way](http://blog.bignerdranch.com/2583-testing-the-android-way/)
