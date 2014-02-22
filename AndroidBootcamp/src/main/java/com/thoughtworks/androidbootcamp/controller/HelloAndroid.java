@@ -1,10 +1,10 @@
 package com.thoughtworks.androidbootcamp.controller;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.thoughtworks.androidbootcamp.R;
+import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
+import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
+import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.model.Game;
 
-public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavigationListener {
+public class HelloAndroid extends Activity implements ActionBar.OnNavigationListener {
 
     /**
      * The serialization (saved instance state) Bundle key representing the
@@ -33,7 +36,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
         setContentView(R.layout.activity_hello);
 
         // Set up the action bar to show a dropdown list.
-        final ActionBar actionBar = getSupportActionBar();
+        final android.app.ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
@@ -85,7 +88,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         // Restore the previously serialized current dropdown position.
         if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-            getSupportActionBar().setSelectedNavigationItem(
+            getActionBar().setSelectedNavigationItem(
                     savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
         }
         if (savedInstanceState.containsKey(STATE_GAME)) {
@@ -98,7 +101,7 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
     public void onSaveInstanceState(Bundle outState) {
         // Serialize the current dropdown position.
         outState.putInt(STATE_SELECTED_NAVIGATION_ITEM,
-                getSupportActionBar().getSelectedNavigationIndex());
+                getActionBar().getSelectedNavigationIndex());
         outState.putSerializable(STATE_GAME, mGame);
     }
 
@@ -125,75 +128,35 @@ public class HelloAndroid extends ActionBarActivity implements ActionBar.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(int position, long id) {
-        // When the given dropdown item is selected, show its contents in the
-        // container view.
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+        switch (position) {
+            case 0:
+                showTreasureList();
+                break;
+            case 1:
+                showHighScores();
+                break;
+            case 2:
+                showMap();
+                break;
+        }
         return true;
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
-                case 1:
-                    showTreasureList(rootView);
-                    break;
-                case 2:
-                    showHighScores(rootView);
-                    break;
-                case 3:
-                    showMap(rootView);
-                    break;
-                default:
-            }
-            return rootView;
-        }
-
-        protected void showTreasureList(View rootView) {
-            setHeading(rootView, R.string.treasure_heading);
-        }
-
-        protected void showHighScores(View rootView) {
-            setHeading(rootView, R.string.scores_heading);
-        }
-
-        protected void showMap(View rootView) {
-            setHeading(rootView, R.string.map_heading);
-        }
-
-        private void setHeading(View rootView, int stringId) {
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(stringId);
-        }
-
+    protected void showMap() {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new MapFragment())
+                .commit();
     }
 
+    protected void showTreasureList() {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new TreasureListFragment())
+                .commit();
+    }
+
+    protected void showHighScores() {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new HighScoresFragment())
+                .commit();
+    }
 }

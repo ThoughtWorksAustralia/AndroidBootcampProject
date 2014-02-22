@@ -1,5 +1,6 @@
 package com.thoughtworks.androidbootcamp.controller;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -8,7 +9,7 @@ import android.widget.EditText;
 
 import com.thoughtworks.androidbootcamp.R;
 
-public class WhoAmIActivity extends ActionBarActivity {
+public class WhoAmIActivity extends Activity {
 
     public static final String PLAYER_DATA = "com.thoughtworks.androidbootcamp.PLAYER_DATA";
 
