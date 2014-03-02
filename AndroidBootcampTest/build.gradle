@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
@@ -10,7 +11,9 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 apply plugin: 'java'
@@ -21,8 +24,9 @@ android {
 }
 
 dependencies {
+    testCompile 'com.android.support:support-v4:19.0.1'
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'com.squareup:fest-android:1.0.+'
-    testCompile 'org.robolectric:robolectric:2.2'
+    testCompile 'org.robolectric:robolectric:2.3-SNAPSHOT'
 }

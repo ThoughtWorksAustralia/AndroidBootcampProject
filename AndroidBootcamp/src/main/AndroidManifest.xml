@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thoughtworks.androidbootcamp"
-    android:versionCode="1"
-    android:versionName="1.0" >
+          xmlns:instrumentationandroid="http://schemas.android.com/apk/res-auto"
+          package="com.thoughtworks.androidbootcamp"
+          android:versionCode="1"
+          android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.thoughtworks.androidbootcamp.controller.HelloAndroid"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +26,7 @@
         <activity
             android:name="com.thoughtworks.androidbootcamp.controller.WhoAmIActivity"
             android:label="@string/title_activity_who_am_i"
-            android:parentActivityName="com.thoughtworks.androidbootcamp.controller.HelloAndroid"
-            android:theme="@style/AppTheme" >
+            android:parentActivityName="com.thoughtworks.androidbootcamp.controller.HelloAndroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.thoughtworks.androidbootcamp.controller.HelloAndroid" />

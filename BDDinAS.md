@@ -30,4 +30,16 @@ Created Robolectric configuration file org.robolectric.Config.properties under s
 10. Robolectric still can't find the Android resources in ```/Users/macosgrove/AndroidStudioProjects/AndroidBootcampProject/AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res```  
 Result is this:  
 ```java.lang.RuntimeException: huh? can't find parent for StyleData{name='AppTheme', parent='Theme_AppCompat_Light_DarkActionBar'}```
-Hacky solution is removing ```android:theme="@style/AppTheme"``` from the ```<application>``` level of the AndroidManifest and putting it at the ```<activity>``` level for each activity.  
+11.  Upgraded to Robolectric 2.3-SNAPSHOT. Installed Maven using ```brew install maven```, set ANDROID_HOME to ```/Applications/Android Studio.app/sdk``` and followed instructions at [Robolectric's github](https://github.com/robolectric/robolectric) to install AppCompat V4. Added AppCompat V4 dependency to testCompile in the test build.gradle.
+12. Still giving the ```huh?``` error. Next tried adding test-project.properties and project.properties in same folder as AndroidManifest.xml.
+Project.properties:  
+```
+target=android-18
+android.library.reference.1=../AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71901.aar/res
+```
+Test.properties:
+```
+android.library.reference.1=../AndroidBootcamp/build/exploded-bundles/ComAndroidSupportAppcompatV71901.aar/res
+```
+Tried various values for the path. Nothing changed the outcome.  
+13. Removed the use of support classes and raised the minimum target sdk version to 14. This now works.
