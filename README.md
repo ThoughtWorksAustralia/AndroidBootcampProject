@@ -31,7 +31,7 @@ Follow these setup steps before your first session:
     1. Choose Download and Install from the context menu
   1. Open the Genymotion app and create a new virtual device
 
-The initial codebase looks [like this] (https://github.com/macosgrove/AndroidBootcampProject/tree/v0)
+The initial codebase looks [like this](https://github.com/macosgrove/AndroidBootcampProject/tree/v0)
 
 ## Week 1: Hello Android
 Goals: 
@@ -45,10 +45,19 @@ Goals:
 [Exercise 4: Keep the game state safe](https://github.com/macosgrove/AndroidBootcampProject/commit/50e7ab9107659897a733298e2504c14578ba85c9),
 [Optional extra](https://github.com/macosgrove/AndroidBootcampProject/commit/2059476941cedb19db271ee68140b844a7404998)  
 
+### Resources
+[Android Developers site](http://developer.android.com/develop/index.html)  
+[The Busy Coder's Guide to Android Development](http://commonsware.com/Android/)  
+[Saving and retrieving instance state](http://www.intertech.com/Blog/saving-and-retrieving-android-instance-state-part-1/)  
+[Parcelable vs Serializable](http://www.developerphil.com/parcelable-vs-serializable/)  
+[Genymotion Users Guide](https://cloud.genymotion.com/page/doc/)  
+[Better performance with the Android emulator](http://stackoverflow.com/questions/2662650/making-the-android-emulator-run-faster)  
+[Gradle](http://www.gradle.org/)  
+
 ## Week 2: BDD with Android
 Goals: 
  * Add a framework for behaviour driven development including a unit test and a functional test
- * Allow the user to start and end a game.  
+ * Allow the user to view treasures, high scores, and a map page.  
 [View the Presentation](http://prezi.com/78y82u9ld2yy/?utm_campaign=share&utm_medium=copy)  
 [Exercise 1: Create a failing instrument test](https://github.com/macosgrove/AndroidBootcampProject/commit/9f5d25952ac48d4e6c9ea5a0345c1ece2c43ddae)  
 [Exercise 2: Add Espresso to the test Part 1](https://github.com/macosgrove/AndroidBootcampProject/commit/5d137c44445bdcc97bb02a53246a3fe6f44a1915),
@@ -60,6 +69,16 @@ Goals:
 [Step by step instructions](https://github.com/macosgrove/AndroidBootcampProject/blob/master/BDDinAS.md)  
 [Exercise 5: Make the tests pass](https://github.com/macosgrove/AndroidBootcampProject/commit/9ef2627ff2e6e40b4d526ba604aadba9bbf128e9)  
 
+### Resources
+[Behaviour Driven Development](http://dannorth.net/introducing-bdd/)  
+[Testing the Android Way](http://blog.bignerdranch.com/2583-testing-the-android-way/) 
+[Serious Unit Testing on Android](http://eclipsesource.com/blogs/2012/06/15/serious-unit-testing-on-android/)  
+[Espresso](https://code.google.com/p/android-test-kit/wiki/Espresso)  
+[Robolectric](http://robolectric.org/)  
+[FEST](http://square.github.io/fest-android/)    
+[Mockito](https://code.google.com/p/mockito/) 
+[JUnit](https://github.com/junit-team/junit/wiki)  
+   
 ## Week 3: Layout and Design
 Goal: Display a list of Treasures (from a provided file)
 
@@ -72,15 +91,5 @@ Goal: Retrieve a real list of Treasures from a server
 ## Week 6: Google APIs
 Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
-## Resources
-### Android in General
-[Android Developers site](http://developer.android.com/develop/index.html)  
-[The Busy Coder's Guide to Android Development](http://commonsware.com/Android/)  
-[Saving and retrieving instance state](http://www.intertech.com/Blog/saving-and-retrieving-android-instance-state-part-1/)  
-[Parcelable vs Serializable](http://www.developerphil.com/parcelable-vs-serializable/)
-
-###Genymotion
-[Genymotion Users Guide](https://cloud.genymotion.com/page/doc/)
-
-###Testing
-[Testing the Android Way](http://blog.bignerdranch.com/2583-testing-the-android-way/)
+### Resources
+[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
