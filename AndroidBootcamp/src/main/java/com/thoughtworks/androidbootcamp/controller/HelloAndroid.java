@@ -18,6 +18,13 @@ import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.model.Game;
+import com.thoughtworks.androidbootcamp.util.TreasureLoader;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class HelloAndroid extends Activity implements ActionBar.OnNavigationListener {
 
@@ -29,6 +36,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     private static final String STATE_GAME = "game_state";
     private static final int PROMPT_FOR_PLAYER = 1000;
     private Game mGame;
+    private TreasureLoader treasureLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +64,12 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         if (savedInstanceState == null) {
             promptForPlayer();
         }
+        
+        treasureLoader = new TreasureLoader(this);
+        treasureLoader.CopySampleImages();
     }
+
+
 
     private void promptForPlayer() {
         Intent i = new Intent(this, WhoAmIActivity.class);
