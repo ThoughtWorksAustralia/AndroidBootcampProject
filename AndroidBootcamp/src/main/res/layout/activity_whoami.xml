@@ -2,10 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context=".WhoAmIActivity$PlaceholderFragment">
 
@@ -13,25 +9,30 @@
         android:id="@+id/player_label"
         android:layout_marginBottom="@dimen/default_inter_row_spacing"
         android:text="@string/player_label"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/PlayerLabelName"/>
-    <Button
-        android:id="@+id/player_ok_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/ok"
-        android:onClick="returnPlayer"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/player_label" />
+
     <EditText
         android:id="@+id/player_field"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:inputType="textPersonName"
         android:layout_below="@id/player_label"
-        android:layout_toLeftOf="@+id/player_ok_button"
-        android:layout_alignBottom="@id/player_ok_button"/>
-
+        android:layout_alignLeft="@id/player_label"
+        android:layout_alignRight="@id/player_label"/>
+    <Button
+        android:id="@+id/player_ok_button"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/ok"
+        android:onClick="returnPlayer"
+        android:layout_alignParentBottom="true"
+        style="?android:attr/buttonBarStyle"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="?android:attr/dividerHorizontal"
+        android:layout_above="@id/player_ok_button"/>
 
 </RelativeLayout>
