@@ -4,12 +4,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -19,12 +15,6 @@ import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.model.Game;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class HelloAndroid extends Activity implements ActionBar.OnNavigationListener {
 
@@ -42,6 +32,9 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
+
+        treasureLoader = new TreasureLoader(this);
+        treasureLoader.copySampleImages();
 
         // Set up the action bar to show a dropdown list.
         final android.app.ActionBar actionBar = getActionBar();
@@ -64,9 +57,6 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         if (savedInstanceState == null) {
             promptForPlayer();
         }
-        
-        treasureLoader = new TreasureLoader(this);
-        treasureLoader.CopySampleImages();
     }
 
 

@@ -2,12 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment">
+    tools:context="com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <GridView
+       android:id="@+id/treasure_list"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:columnWidth="@dimen/treasure_grid_width"
+       android:numColumns="auto_fit"
+       android:stretchMode="columnWidth"
+       android:horizontalSpacing="@dimen/treasure_grid_spacing"
+       android:verticalSpacing="@dimen/treasure_grid_spacing"
+       android:padding="@dimen/treasure_grid_spacing"/>
 
 </FrameLayout>
