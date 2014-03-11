@@ -85,6 +85,10 @@ Goal: Display a list of Treasures (from a provided file)
 ## Week 4: Using the Hardware
 Goal: Take a photo of a found Treasure. Evaluate its proximity to the listed Treasure
 
+### Resources
+[Using the Camera in Android](http://developer.android.com/guide/topics/media/camera.html)
+[Android Location API (can use to calc distances between two points)](http://developer.android.com/reference/android/location/Location.html) 
+
 ## Week 5: Data & Communication
 Goal: Retrieve a real list of Treasures from a server
 
@@ -92,4 +96,4 @@ Goal: Retrieve a real list of Treasures from a server
 Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ### Resources
-[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
+[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
