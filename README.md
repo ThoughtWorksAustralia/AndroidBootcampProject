@@ -86,7 +86,7 @@ Goal: Display a list of Treasures (from a provided file)
 Goal: Take a photo of a found Treasure. Evaluate its proximity to the listed Treasure
 
 ### Resources
-[Using the Camera in Android](http://developer.android.com/guide/topics/media/camera.html)
+[Using the Camera in Android](http://developer.android.com/guide/topics/media/camera.html)  
 [Android Location API (can use to calc distances between two points)](http://developer.android.com/reference/android/location/Location.html) 
 
 ## Week 5: Data & Communication
