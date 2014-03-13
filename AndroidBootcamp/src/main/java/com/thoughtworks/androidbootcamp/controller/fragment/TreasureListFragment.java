@@ -2,6 +2,7 @@ package com.thoughtworks.androidbootcamp.controller.fragment;
 
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,7 +23,6 @@ import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 
 import java.io.File;
 import java.io.IOException;
-
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -97,6 +97,16 @@ public class TreasureListFragment extends Fragment {
 
         } catch (IOException ex) {
             Log.e(TAG, "Error opening file", ex);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that its the right result and that it was successful
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
         }
     }
 }
