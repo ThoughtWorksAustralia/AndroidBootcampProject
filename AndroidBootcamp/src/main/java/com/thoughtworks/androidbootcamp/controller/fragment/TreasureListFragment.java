@@ -1,10 +1,11 @@
 package com.thoughtworks.androidbootcamp.controller.fragment;
 
 
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.location.Location;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
@@ -23,6 +25,8 @@ import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 
 import java.io.File;
 import java.io.IOException;
+
+import static java.lang.String.format;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -85,7 +89,7 @@ public class TreasureListFragment extends Fragment {
                     getString(R.string.app_name));
 
             // store the path so we know where it is later
-            mCurrentPhotoPath = "file:" + photoFile.getAbsolutePath();
+            mCurrentPhotoPath = photoFile.getAbsolutePath();
 
             // tell camera app when to put the photo
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
@@ -106,7 +110,34 @@ public class TreasureListFragment extends Fragment {
 
         // check that its the right result and that it was successful
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Retrieve geocode info from the taken photo and treasure
+            final Location photoLocation = getLocationForImage(mCurrentPhotoPath);
+            final Location treasureLocation = getLocationForImage(mSelectedTreasurePath);
 
+            // calculate distance between points
+            final float distance = treasureLocation.distanceTo(photoLocation);
+
+            Toast.makeText(getActivity(), format("Your photo is %s metres from treasure", distance),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private Location getLocationForImage(String imagePath) {
+        try {
+            // Note: genymotion doesnt seem to want to add the appropriate location tags to the photo
+            // to test this you need to use a real device
+            ExifInterface exifInterface = new ExifInterface(new File(imagePath).getCanonicalPath());
+            float latlng [] = new float[2];
+            exifInterface.getLatLong(latlng);
+
+            Location location = new Location(imagePath);
+            location.setLatitude(latlng[0]);
+            location.setLongitude(latlng[1]);
+
+            return location;
+        } catch (IOException e) {
+            Log.e(TAG, "Unable to retrieve exif tags from image", e);
+            return null;
         }
     }
 }

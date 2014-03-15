@@ -63,7 +63,7 @@ public class TreasureLoader {
 
         String[] filesWithPaths = new String[fileNames.length];
         for (int i=0; i < fileNames.length; i++)
-            filesWithPaths[i] = "file://" + cacheDir + "/" + fileNames[i];
+            filesWithPaths[i] =  cacheDir + "/" + fileNames[i];
 
         return filesWithPaths;
     }
