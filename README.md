@@ -87,11 +87,10 @@ Goals:
  * Take a photo of a found Treasure using the phones built in camera app  
  * Evaluate its proximity to the listed Treasure  
 [View the Presentation](http://prezi.com/cvbktfttlnj4/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
-[Exercise 1: Create a failing instrument test]()  
-[Exercise 2: Register a on item click listener for the treasure list](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/2499eac0bdb27ae576bbec69a480ac5080e99e65)  
-[Exercise 3: Use an Intent to create a photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/205897d08c958d37e42f908bc1634dcc319a0c08)  
-[Exercise 4: Get the captured photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d53461cd1d33c4b87c634ffdb36e1abcb589d2f4)  
-[Exercise 5: Calculate the distance between the two photos location and show in Toast message](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/8f12a82aa5541fdf568b5f64127b5ccd558a6e62)  
+[Exercise 1: Register a on item click listener for the treasure list](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/2499eac0bdb27ae576bbec69a480ac5080e99e65)  
+[Exercise 2: Use an Intent to create a photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/205897d08c958d37e42f908bc1634dcc319a0c08)  
+[Exercise 3: Get the captured photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d53461cd1d33c4b87c634ffdb36e1abcb589d2f4)  
+[Exercise 4: Calculate the distance between the two photos location and show in Toast message](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/8f12a82aa5541fdf568b5f64127b5ccd558a6e62)  
 
 ### Resources  
 [EXIF](http://en.wikipedia.org/wiki/Exchangeable_image_file_format)  
