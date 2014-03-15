@@ -83,7 +83,10 @@ Goals:
 Goal: Display a list of Treasures (from a provided file)
 
 ## Week 4: Using the Camera
-Goals:
+Prerequisites:  
+The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)  
+Please install [this](https://play.google.com/store/apps/details?id=com.magix.camera_mx) in your GenyMotion emulator  
+Goals:  
  * Take a photo of a found Treasure using the phones built in camera app  
  * Evaluate its proximity to the listed Treasure  
 [View the Presentation](http://prezi.com/cvbktfttlnj4/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
