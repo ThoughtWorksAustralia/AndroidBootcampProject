@@ -84,8 +84,8 @@ Goal: Display a list of Treasures (from a provided file)
 
 ## Week 4: Using the Camera
 Goals:
-# Take a photo of a found Treasure using the phones built in camera app
-# Evaluate its proximity to the listed Treasure
+ * Take a photo of a found Treasure using the phones built in camera app
+ * Evaluate its proximity to the listed Treasure
 [Exercise 1: Create a failing instrument test]()
 [Exercise 2: Register a on item click listener for the treasure list](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/2499eac0bdb27ae576bbec69a480ac5080e99e65)
 [Exercise 3: Use an Intent to create a photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/205897d08c958d37e42f908bc1634dcc319a0c08)
