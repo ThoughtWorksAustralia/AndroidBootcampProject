@@ -7,9 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
-import com.thoughtworks.androidbootcamp.R;
-
-import java.util.List;
 
 /**
  * Created by trogdor on 5/03/14.
@@ -42,7 +39,7 @@ public class TreasureListAdapter extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView = (view == null) ? new ImageView(context) : (ImageView) view;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Picasso.with(context).load(treasurePaths[i]).resize(640, 480).centerCrop().into(imageView);
+        Picasso.with(context).load("file://" + treasurePaths[i]).resize(640, 480).centerCrop().into(imageView);
         return imageView;
     }
 }

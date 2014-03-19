@@ -82,8 +82,25 @@ Goals:
 ## Week 3: Layout and Design
 Goal: Display a list of Treasures (from a provided file)
 
-## Week 4: Using the Hardware
-Goal: Take a photo of a found Treasure. Evaluate its proximity to the listed Treasure
+## Week 4: Using the Camera
+Prerequisites:  
+The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)  
+Please install [this](https://play.google.com/store/apps/details?id=com.magix.camera_mx) in your GenyMotion emulator  
+Goals:  
+ * Take a photo of a found Treasure using the phones built in camera app  
+ * Evaluate its proximity to the listed Treasure  
+[View the Presentation](http://prezi.com/cvbktfttlnj4/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
+[Exercise 1: Register a on item click listener for the treasure list](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/2499eac0bdb27ae576bbec69a480ac5080e99e65)  
+[Exercise 2: Use an Intent to create a photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/205897d08c958d37e42f908bc1634dcc319a0c08)  
+[Exercise 3: Get the captured photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d53461cd1d33c4b87c634ffdb36e1abcb589d2f4)  
+[Exercise 4: Calculate the distance between the two photos location and show in Toast message](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/8f12a82aa5541fdf568b5f64127b5ccd558a6e62)  
+
+### Resources  
+[EXIF](http://en.wikipedia.org/wiki/Exchangeable_image_file_format)  
+[Intents](http://developer.android.com/guide/components/intents-filters.html)  
+[Using the Camera in Android](http://developer.android.com/guide/topics/media/camera.html)    
+[Android Location API (can use to calc distances between two points)](http://developer.android.com/reference/android/location/Location.html)  
+[Toasts in Android](http://developer.android.com/guide/topics/ui/notifiers/toasts.html)  
 
 ## Week 5: Data & Communication
 Goal: Retrieve a real list of Treasures from a server
@@ -92,4 +109,4 @@ Goal: Retrieve a real list of Treasures from a server
 Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ### Resources
-[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
+[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
