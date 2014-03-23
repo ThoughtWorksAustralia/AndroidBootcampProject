@@ -80,7 +80,20 @@ Goals:
 [JUnit](https://github.com/junit-team/junit/wiki)  
    
 ## Week 3: Layout and Design
-Goal: Display a list of Treasures (from a provided file)
+Goals: 
+ * Layout the welcome screen
+ * Display a list of treasures
+[View the Presentation](http://prezi.com/v9yrnlv2yerk/?utm_campaign=share&utm_medium=copy&rc=ex0share)
+[Exercise 1 Part 1: Prettify the welcome screen](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ff34f3207670a7713621aad9814eb367c72cb9e5)
+[Exercise 2 Part 2: Further enhancement](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/db5dbfcbf49251a0b4b8debc622b91c9e18bbb99)
+[Exercise 2 Part 1: Write a test for the Treasure List](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/4fa78d569cda9687481846eea6d5662de50d440c)
+[Exercise 2 Part 2: Create the gridview and adapter](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/4fa78d569cda9687481846eea6d5662de50d440c)
+
+### Resources
+[Designing for Multiple Screens](http://developer.android.com/training/multiscreen/index.html)
+[Styles and Themes](http://developer.android.com/guide/topics/ui/themes.html)
+[Layouts](http://developer.android.com/guide/topics/ui/declaring-layout.html)
+[Grid View](http://developer.android.com/guide/topics/ui/layout/gridview.html)
 
 ## Week 4: Using the Camera
 Prerequisites:  
