@@ -115,7 +115,7 @@ Goals:
 [Android Location API (can use to calc distances between two points)](http://developer.android.com/reference/android/location/Location.html)  
 [Toasts in Android](http://developer.android.com/guide/topics/ui/notifiers/toasts.html)  
 
-## Week 5: Data & Communication
+## Week 5: Data and Communication
 Goal: Retrieve a real list of Treasures from a server
 
 ## Week 6: Google APIs
@@ -123,3 +123,4 @@ Goal: Complete the game with a map of actual vs found Treasure locations. Genera
 
 ### Resources
 [Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
+
