@@ -1,14 +1,39 @@
-package com.thoughtworks.androidbootcamp.model;
+package com.throughtworks.androidbootcamp;
 
-/**
- * Created by trogdor on 10/02/14.
- */
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.annotations.Expose;
+
 public class Treasure {
-    String name;
-    float latitude;
-    float longitude;
-    String hint;
-    String photo;
+    private String address;
+    private List<Double> coordinates = new ArrayList<Double>();
+    private String id;
+    private String name;
+    private String url;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Double> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(List<Double> coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -18,35 +43,12 @@ public class Treasure {
         this.name = name;
     }
 
-    public float getLatitude() {
-        return latitude;
+    public String getUrl() {
+        return url;
     }
 
-    public void setLatitude(float latitude) {
-        this.latitude = latitude;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public float getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(float longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getHint() {
-        return hint;
-    }
-
-    public void setHint(String hint) {
-        this.hint = hint;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 }
