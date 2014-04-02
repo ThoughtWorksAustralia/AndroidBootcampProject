@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -29,6 +30,7 @@ import com.thoughtworks.androidbootcamp.util.TreasureService;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.RestAdapter;
 
@@ -50,6 +52,7 @@ public class TreasureListFragment extends Fragment {
     private String mSelectedTreasurePath;
 
     private TreasureListAdapter mTreasureListAdapter;
+    List<Treasure> treasureList;
 
     public TreasureListFragment() {
         // Required empty public constructor
@@ -59,7 +62,7 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        treasureService = new RestAdapter.Builder()
+        treasureService =  new RestAdapter.Builder()
                 .setEndpoint(Properties.SERVICE_URL)
                 .build()
                 .create(TreasureService.class);
@@ -75,10 +78,7 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        GridView gridView = (GridView) view.findViewById(R.id.treasure_list);
-        mTreasureListAdapter = new TreasureListAdapter(getActivity(), new ArrayList<Treasure>());
-        gridView.setAdapter(mTreasureListAdapter);
-
+        final GridView gridView = (GridView) view.findViewById(R.id.treasure_list);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -86,7 +86,19 @@ public class TreasureListFragment extends Fragment {
                 takePhoto();
             }
         });
+        new AsyncTask<Void, Void, List<Treasure>>() {
+            @Override
+            protected List<Treasure> doInBackground(Void... voids) {
+                return treasureService.listTreasures();
+            }
 
+            @Override
+            protected void onPostExecute(List<Treasure> treasures) {
+                treasureList = treasures;
+                mTreasureListAdapter = new TreasureListAdapter(getActivity(), treasureList);
+                gridView.setAdapter(mTreasureListAdapter);
+            }
+        }.execute();
     }
 
     public void takePhoto() {

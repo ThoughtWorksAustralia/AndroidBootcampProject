@@ -49,6 +49,6 @@ public class TreasureListAdapter extends BaseAdapter{
     }
 
     public String getUrlForTreasure(Treasure treasure) {
-        return Properties.SERVICE_URL + "/" + treasure.getUrl();
+        return Properties.SERVICE_URL + "/" + treasure.getUrl().replace("public/", "");
     }
 }
