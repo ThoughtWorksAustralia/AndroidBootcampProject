@@ -19,13 +19,16 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.thoughtworks.androidbootcamp.R;
+import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
 import com.thoughtworks.androidbootcamp.util.FileUtils;
+import com.thoughtworks.androidbootcamp.util.Properties;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 import com.thoughtworks.androidbootcamp.util.TreasureService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit.RestAdapter;
 
@@ -56,7 +59,10 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        treasureLoader = new TreasureLoader(getActivity());
+        treasureService = new RestAdapter.Builder()
+                .setEndpoint(Properties.SERVICE_URL)
+                .build()
+                .create(TreasureService.class);
     }
 
     @Override
@@ -70,7 +76,7 @@ public class TreasureListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         GridView gridView = (GridView) view.findViewById(R.id.treasure_list);
-        mTreasureListAdapter = new TreasureListAdapter(getActivity(), treasureLoader.getSampleImagePaths());
+        mTreasureListAdapter = new TreasureListAdapter(getActivity(), new ArrayList<Treasure>());
         gridView.setAdapter(mTreasureListAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -7,39 +7,48 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.util.Properties;
+
+import java.util.List;
 
 /**
  * Created by trogdor on 5/03/14.
  */
 public class TreasureListAdapter extends BaseAdapter{
     Context context;
-    String[] treasurePaths;
+    List<Treasure> treasures;
 
-    public TreasureListAdapter(Context context, String[] paths) {
+    public TreasureListAdapter(Context context, List<Treasure> treasures) {
         this.context = context;
-        this.treasurePaths = paths;
+        this.treasures = treasures;
     }
 
     @Override
     public int getCount() {
-        return treasurePaths.length;
+        return treasures.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return treasurePaths[i];
+        return treasures.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return treasurePaths[i].hashCode();
+        return treasures.get(i).hashCode();
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView = (view == null) ? new ImageView(context) : (ImageView) view;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Picasso.with(context).load("file://" + treasurePaths[i]).resize(640, 480).centerCrop().into(imageView);
+        String url = getUrlForTreasure(treasures.get(i));
+        Picasso.with(context).load(url).resize(640, 480).centerCrop().into(imageView);
         return imageView;
+    }
+
+    public String getUrlForTreasure(Treasure treasure) {
+        return Properties.SERVICE_URL + "/" + treasure.getUrl();
     }
 }
