@@ -22,9 +22,12 @@ import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
 import com.thoughtworks.androidbootcamp.util.FileUtils;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
+import com.thoughtworks.androidbootcamp.util.TreasureService;
 
 import java.io.File;
 import java.io.IOException;
+
+import retrofit.RestAdapter;
 
 import static java.lang.String.format;
 
@@ -38,6 +41,7 @@ public class TreasureListFragment extends Fragment {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
     TreasureLoader treasureLoader;
+    TreasureService treasureService;
 
     private String mCurrentPhotoPath;
     private String mSelectedTreasurePath;

@@ -1,4 +1,4 @@
-package com.throughtworks.androidbootcamp;
+package com.thoughtworks.androidbootcamp;
 
 import java.util.ArrayList;
 import java.util.List;
