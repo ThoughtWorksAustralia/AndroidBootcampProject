@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
 apply plugin: 'android'
@@ -27,5 +27,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:support-v4:+'
     compile 'com.squareup.picasso:picasso:+'
-    instrumentTestCompile fileTree(dir: 'src/instrumentTest/libs', includes: ['*.jar'])
+    androidTestCompile fileTree(dir: 'src/androidTest/libs', includes: ['*.jar'])
 }
