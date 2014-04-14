@@ -97,8 +97,14 @@ Goals:
 
 ## Week 4: Using the Camera
 Prerequisites:  
-The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)  
-Please install [this](https://play.google.com/store/apps/details?id=com.magix.camera_mx) in your GenyMotion emulator  
+The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)
+
+1. Install google play services, Download this file: http://goo.im/gapps/gapps-jb-20130813-signed.zip  
+2. Drag the downloaded zip onto your running Genymotion emulator
+3. Ignore any errors and restart the emulator
+4. Now using the playstore in your emulator find the App called Camera MX and install it
+5. If you cant find it here is the link https://play.google.com/store/apps/details?id=com.magix.camera_mx
+ 
 Goals:  
  * Take a photo of a found Treasure using the phones built in camera app  
  * Evaluate its proximity to the listed Treasure  
