@@ -99,7 +99,7 @@ Goals:
 Prerequisites:  
 The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)
 
-1. Install google play services, Download this file: http://goo.im/gapps/gapps-jb-20130813-signed.zip  
+1. Install google play services, Download the appropriate Google Apps for Android zip file for your device from here: http://stackoverflow.com/a/20013322
 2. Drag the downloaded zip onto your running Genymotion emulator
 3. Ignore any errors and restart the emulator
 4. Now using the playstore in your emulator find the App called Camera MX and install it
