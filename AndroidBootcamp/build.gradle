@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
 apply plugin: 'android'
@@ -14,7 +14,7 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.0'
+    buildToolsVersion "19.0.0"
 
     defaultConfig {
         minSdkVersion 7
@@ -25,5 +25,5 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
-    instrumentTestCompile fileTree(dir: 'src/instrumentTest/libs', includes: ['*.jar'])
+    androidTestCompile fileTree(dir: 'src/androidTest/libs', includes: ['*.jar'])
 }

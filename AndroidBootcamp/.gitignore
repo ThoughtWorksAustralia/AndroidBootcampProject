@@ -1,4 +1,5 @@
 /build
 /.idea/
 .DS_Store
+.idea
 *.iml
