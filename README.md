@@ -12,13 +12,10 @@ A single player game. The app supplies a list of photos of 'treasures' in your l
 Follow these setup steps before your first session:
 
 1. Install [Java SE SDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if you don't have it
+1. Install [Git](http://git-scm.com/book/en/Getting-Started-Installing-Git) if you don't have it 
 1. Download and install [Android Studio](http://tools.android.com/download/studio/canary)
-1. Studio will prompt you to create a new project. Use the default settings, except:
-  1. Enter any project name you like
-  1. Enter "HelloAndroid" as the Activity Name
-  1. Enter activity_hello as the layout name
-  1. Change the Package Name to com.thoughtworks.androidbootcamp or something that's relevant to you. Note that a device can carry only one application from any given package, and the Google Play store will only list one application per package.
-  1. Select Navigation Type: Action Bar Spinner
+1. Create a directory called AndroidStudioProjects. Change to that directory. At the command line, type
+```git clone https://github.com/ThoughtWorksAustralia/AndroidBootcampProject.git```
 1. If you previously had a version of Android installed on your machine, you may need to use Android's [SDK manager](http://developer.android.com/tools/help/sdk-manager.html) to install Build Tools v19.
 1. (Optional) Download and install [Genymotion](https://cloud.genymotion.com/page/launchpad/download/)
   1. Create an account on the [Genymotion cloud](https://cloud.genymotion.com/page/customer/login/)
@@ -31,10 +28,15 @@ Follow these setup steps before your first session:
     1. Choose Download and Install from the context menu
   1. Open the Genymotion app and create a new virtual device
 
-The initial codebase looks [like this](https://github.com/macosgrove/AndroidBootcampProject/tree/v0)
+
 
 ## Week 1: Hello Android
-Goals: 
+###Prerequisites:
+In the Android Bootcamp directory you set up earlier, do:   
+```git stash``` (if you've made any changes)   
+```git checkout start-week-1```  
+  
+###Goals: 
  * Develop a working "hello world" app and explore its anatomy.
  * Allow the user to enter their name.  
 [View the Presentation](http://prezi.com/jibn_vzm9rml/?utm_campaign=share&utm_medium=copy)  
@@ -55,7 +57,12 @@ Goals:
 [Gradle](http://www.gradle.org/)  
 
 ## Week 2: BDD with Android
-Goals: 
+###Prerequisites:
+In the Android Bootcamp directory you set up earlier, do:    
+```git stash``` (if you've made any changes)   
+```git checkout start-week-2```  
+
+###Goals: 
  * Add a framework for behaviour driven development including a unit test and a functional test
  * Allow the user to view treasures, high scores, and a map page.  
 [View the Presentation](http://prezi.com/78y82u9ld2yy/?utm_campaign=share&utm_medium=copy)  
@@ -80,7 +87,12 @@ Goals:
 [JUnit](https://github.com/junit-team/junit/wiki)  
    
 ## Week 3: Layout and Design
-Goals: 
+###Prerequisites:
+In the Android Bootcamp directory you set up earlier, do:   
+```git stash``` (if you've made any changes)   
+```git checkout start-week-3```  
+
+###Goals: 
  * Layout the welcome screen
  * Display a list of treasures  
 [View the Presentation](http://prezi.com/v9yrnlv2yerk/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
@@ -96,7 +108,10 @@ Goals:
 [Grid View](http://developer.android.com/guide/topics/ui/layout/gridview.html)  
 
 ## Week 4: Using the Camera
-Prerequisites:  
+###Prerequisites:  
+In the Android Bootcamp directory you set up earlier, do:     
+```git stash``` (if you've made any changes)     
+```git checkout start-week-4```    
 The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)
 
 1. Install google play services, Download the appropriate Google Apps for Android zip file for your device from here: http://stackoverflow.com/a/20013322
@@ -105,7 +120,8 @@ The default camera app in Genymotion doesn't capture the GPS details for taken p
 4. Now using the playstore in your emulator find the App called Camera MX and install it
 5. If you cant find it here is the link https://play.google.com/store/apps/details?id=com.magix.camera_mx
  
-Goals:  
+###Goals: 
+ * Find out how to access the Camera app 
  * Take a photo of a found Treasure using the phones built in camera app  
  * Evaluate its proximity to the listed Treasure  
 [View the Presentation](http://prezi.com/cvbktfttlnj4/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
@@ -122,10 +138,24 @@ Goals:
 [Toasts in Android](http://developer.android.com/guide/topics/ui/notifiers/toasts.html)  
 
 ## Week 5: Data and Communication
-Goal: Retrieve a real list of Treasures from a server
+###Prerequisites:  
+In the Android Bootcamp directory you set up earlier, do:     
+```git stash``` (if you've made any changes)      
+```git checkout start-week-5```      
+
+###Goals: 
+ * Learn about handling data and communicating with a server
+ * Retrieve a real list of Treasures from a server
 
 ## Week 6: Google APIs
-Goal: Complete the game with a map of actual vs found Treasure locations. Generate a score.
+###Prerequisites:  
+In the Android Bootcamp directory you set up earlier, do:     
+```git stash``` (if you've made any changes)     
+```git checkout start-week-6```
+
+###Goals: 
+ * Explore the Google Maps API
+ * Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ### Resources
 [Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
