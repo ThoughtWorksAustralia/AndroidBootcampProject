@@ -45,7 +45,6 @@ public class TreasureListFragment extends Fragment {
     private static final String TAG = "TreasureListFragment";
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
-    TreasureLoader treasureLoader;
     TreasureService treasureService;
 
     private String mCurrentPhotoPath;

@@ -16,7 +16,7 @@
         <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
     </style>
     <style name="SectionHeading">
-        <item name="android:textSize">@dimen/intro_text_size</item>
+        <item name="android:textSize">@dimen/heading_text_size</item>
         <item name="android:textColor">@color/highlight</item>
         <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
