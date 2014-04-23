@@ -48,7 +48,7 @@ public class TreasureListFragment extends Fragment {
     TreasureService treasureService;
 
     private String mCurrentPhotoPath;
-    private String mSelectedTreasurePath;
+    private Treasure mSelectedTreasure;
 
     private TreasureListAdapter mTreasureListAdapter;
     List<Treasure> treasureList;
@@ -61,7 +61,7 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        treasureService =  new RestAdapter.Builder()
+        treasureService = new RestAdapter.Builder()
                 .setEndpoint(Properties.SERVICE_URL)
                 .build()
                 .create(TreasureService.class);
@@ -81,7 +81,7 @@ public class TreasureListFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mSelectedTreasurePath = (String) mTreasureListAdapter.getItem(position);
+                mSelectedTreasure = (Treasure) mTreasureListAdapter.getItem(position);
                 takePhoto();
             }
         });
@@ -115,7 +115,7 @@ public class TreasureListFragment extends Fragment {
             // tell camera app when to put the photo
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
 
-            if(intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                 // ask to use the camera
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
@@ -133,7 +133,7 @@ public class TreasureListFragment extends Fragment {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             // Retrieve geocode info from the taken photo and treasure
             final Location photoLocation = getLocationForImage(mCurrentPhotoPath);
-            final Location treasureLocation = getLocationForImage(mSelectedTreasurePath);
+            final Location treasureLocation = getLocationForTreasure(mSelectedTreasure);
 
             // calculate distance between points
             final float distance = treasureLocation.distanceTo(photoLocation);
@@ -148,7 +148,7 @@ public class TreasureListFragment extends Fragment {
             // Note: genymotion doesnt seem to want to add the appropriate location tags to the photo
             // to test this you need to use a real device
             ExifInterface exifInterface = new ExifInterface(new File(imagePath).getCanonicalPath());
-            float latlng [] = new float[2];
+            float latlng[] = new float[2];
             exifInterface.getLatLong(latlng);
 
             Location location = new Location(imagePath);
@@ -160,5 +160,13 @@ public class TreasureListFragment extends Fragment {
             Log.e(TAG, "Unable to retrieve exif tags from image", e);
             return null;
         }
+    }
+
+    private Location getLocationForTreasure(Treasure treasure)
+    {
+        Location location = new Location("");
+        location.setLongitude(treasure.getCoordinates().get(0));
+        location.setLatitude(treasure.getCoordinates().get(1));
+        return location;
     }
 }
