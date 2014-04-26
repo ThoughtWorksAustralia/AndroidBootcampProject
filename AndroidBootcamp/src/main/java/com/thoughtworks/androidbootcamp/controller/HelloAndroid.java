@@ -10,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.thoughtworks.androidbootcamp.R;
+import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.model.Game;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
+
+import java.util.List;
 
 public class HelloAndroid extends Activity implements ActionBar.OnNavigationListener {
 
@@ -32,6 +35,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
+        mGame = new Game();
 
         treasureLoader = new TreasureLoader(this);
         treasureLoader.copySampleImages();
@@ -71,15 +75,10 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PROMPT_FOR_PLAYER) {
             if (resultCode == RESULT_OK) {
-                String player = data.getStringExtra(WhoAmIActivity.PLAYER_DATA);
-                createGame(player);
+                mGame.setPlayer(data.getStringExtra(WhoAmIActivity.PLAYER_DATA));
+                welcomePlayer();
             }
         }
-    }
-
-    private void createGame(String player) {
-        mGame = new Game(player);
-        welcomePlayer();
     }
 
     private void welcomePlayer() {
@@ -161,5 +160,17 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, new HighScoresFragment())
                 .commit();
+    }
+
+    public void setTreasures(List<Treasure> treasures) {
+        mGame.setTreasures(treasures);
+    }
+
+    public Game getGame() {
+        return mGame;
+    }
+
+    public List<Treasure> getTreasures() {
+        return mGame.getTreasures();
     }
 }

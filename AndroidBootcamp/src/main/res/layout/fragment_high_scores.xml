@@ -12,13 +12,12 @@
         android:text="@string/scores_heading"
         style="@style/SectionHeading"/>
 
-    <GridView
+    <ListView
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:id="@+id/high_score_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="1"
         android:verticalSpacing="@dimen/default_inter_row_spacing"
         />
 </LinearLayout>

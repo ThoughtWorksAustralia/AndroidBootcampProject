@@ -1,10 +1,14 @@
 package com.thoughtworks.androidbootcamp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.androidbootcamp.model.Attempt;
 
-public class Treasure {
+public class Treasure implements Serializable {
+    //For best performance, implement Parcelable rather than Serializable
+    //See http://www.developerphil.com/parcelable-vs-serializable/, for example
     private String address;
     private List<Double> coordinates = new ArrayList<Double>();
     private String id;

@@ -21,15 +21,15 @@ import android.widget.Toast;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
 import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
+import com.thoughtworks.androidbootcamp.model.Attempt;
 import com.thoughtworks.androidbootcamp.util.FileUtils;
 import com.thoughtworks.androidbootcamp.util.Properties;
-import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 import com.thoughtworks.androidbootcamp.util.TreasureService;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.RestAdapter;
@@ -93,8 +93,9 @@ public class TreasureListFragment extends Fragment {
 
             @Override
             protected void onPostExecute(List<Treasure> treasures) {
-                treasureList = treasures;
-                mTreasureListAdapter = new TreasureListAdapter(getActivity(), treasureList);
+                HelloAndroid activity = (HelloAndroid) getActivity();
+                activity.setTreasures(treasures);
+                mTreasureListAdapter = new TreasureListAdapter(activity);
                 gridView.setAdapter(mTreasureListAdapter);
             }
         }.execute();
