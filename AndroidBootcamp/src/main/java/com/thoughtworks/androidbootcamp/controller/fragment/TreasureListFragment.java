@@ -20,10 +20,12 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.thoughtworks.androidbootcamp.R;
-import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
 import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
 import com.thoughtworks.androidbootcamp.model.Attempt;
+import com.thoughtworks.androidbootcamp.model.Game;
+import com.thoughtworks.androidbootcamp.model.Locatable;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.FileUtils;
 import com.thoughtworks.androidbootcamp.util.Properties;
 import com.thoughtworks.androidbootcamp.util.TreasureService;
@@ -34,6 +36,7 @@ import java.util.List;
 
 import retrofit.RestAdapter;
 
+import static java.lang.Math.round;
 import static java.lang.String.format;
 
 /**
@@ -52,11 +55,23 @@ public class TreasureListFragment extends Fragment {
 
     private TreasureListAdapter mTreasureListAdapter;
     List<Treasure> treasureList;
+    private Game mGame;
 
     public TreasureListFragment() {
         // Required empty public constructor
     }
 
+    public Game getGame() {
+        return mGame;
+    }
+
+    public Treasure getSelectedTreasure() {
+        return mSelectedTreasure;
+    }
+
+    public String getCurrentPhotoPath() {
+        return mCurrentPhotoPath;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +109,8 @@ public class TreasureListFragment extends Fragment {
             @Override
             protected void onPostExecute(List<Treasure> treasures) {
                 HelloAndroid activity = (HelloAndroid) getActivity();
-                activity.setTreasures(treasures);
+                mGame = activity.getGame();
+                mGame.setTreasures(treasures);
                 mTreasureListAdapter = new TreasureListAdapter(activity);
                 gridView.setAdapter(mTreasureListAdapter);
             }
@@ -132,42 +148,45 @@ public class TreasureListFragment extends Fragment {
 
         // check that its the right result and that it was successful
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            // Retrieve geocode info from the taken photo and treasure
-            final Location photoLocation = getLocationForImage(mCurrentPhotoPath);
-            final Location treasureLocation = getLocationForTreasure(mSelectedTreasure);
-
-            // calculate distance between points
-            final float distance = treasureLocation.distanceTo(photoLocation);
-
-            Toast.makeText(getActivity(), format("Your photo is %s metres from treasure", distance),
-                    Toast.LENGTH_LONG).show();
+            onTreasureAttempted();
         }
     }
 
-    private Location getLocationForImage(String imagePath) {
+    protected void onTreasureAttempted() {
+        // Retrieve geocode info from the taken photo and treasure
+        Attempt attempt = createAttemptForPhoto(getCurrentPhotoPath());
+        attempt.setDistance(calculateDistance(getSelectedTreasure(), attempt));
+        getGame().recordAttempt(getSelectedTreasure(), attempt);
+
+        Toast.makeText(getActivity(), format("Your photo is %s metres from treasure", attempt.getDistance()),
+                Toast.LENGTH_LONG).show();
+    }
+
+    protected Attempt createAttemptForPhoto(String photoPath) {
         try {
-            // Note: genymotion doesnt seem to want to add the appropriate location tags to the photo
-            // to test this you need to use a real device
-            ExifInterface exifInterface = new ExifInterface(new File(imagePath).getCanonicalPath());
+            // Note: The built in camera in Genymotion devices does not record geolocation
+            // To test this on a Genymotion emulation, you need to install google play store,
+            // Download the CameraMX app, turn on location services, set the current location,
+            // And select the CameraMX app when you take the photo
+            ExifInterface exifInterface = new ExifInterface(new File(photoPath).getCanonicalPath());
             float latlng[] = new float[2];
             exifInterface.getLatLong(latlng);
 
-            Location location = new Location(imagePath);
-            location.setLatitude(latlng[0]);
-            location.setLongitude(latlng[1]);
+            return new Attempt(latlng[0], latlng[1], photoPath);
 
-            return location;
         } catch (IOException e) {
             Log.e(TAG, "Unable to retrieve exif tags from image", e);
             return null;
         }
     }
 
-    private Location getLocationForTreasure(Treasure treasure)
-    {
-        Location location = new Location("");
-        location.setLongitude(treasure.getCoordinates().get(0));
-        location.setLatitude(treasure.getCoordinates().get(1));
-        return location;
+    protected int calculateDistance(Locatable place1, Locatable place2) {
+        Location place1Loc = new Location("place1");
+        place1Loc.setLatitude(place1.getLatitude());
+        place1Loc.setLongitude(place1.getLongitude());
+        Location place2Loc = new Location("place2");
+        place2Loc.setLatitude(place2.getLatitude());
+        place2Loc.setLongitude(place2.getLongitude());
+        return round(place1Loc.distanceTo(place2Loc));
     }
 }

@@ -2,7 +2,7 @@ package com.thoughtworks.androidbootcamp.model;
 
 import android.location.Location;
 
-import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 
 import java.io.Serializable;
 import java.util.ArrayList;

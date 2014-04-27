@@ -1,12 +1,10 @@
-package com.thoughtworks.androidbootcamp;
+package com.thoughtworks.androidbootcamp.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.thoughtworks.androidbootcamp.model.Attempt;
 
-public class Treasure implements Serializable {
+public class Treasure implements Serializable, Locatable {
     //For best performance, implement Parcelable rather than Serializable
     //See http://www.developerphil.com/parcelable-vs-serializable/, for example
     private String address;
@@ -25,6 +23,24 @@ public class Treasure implements Serializable {
 
     public List<Double> getCoordinates() {
         return coordinates;
+    }
+
+    @Override
+    public double getLatitude() {
+        return coordinates.get(1);
+    }
+
+    @Override
+    public double getLongitude() {
+        return coordinates.get(0);
+    }
+
+    @Override
+    public void setCoordinates(double latitude, double longitude) {
+        coordinates.clear();
+        //Longitude is stored first because that's how the server sends it through
+        coordinates.add(longitude);
+        coordinates.add(latitude);
     }
 
     public void setCoordinates(List<Double> coordinates) {

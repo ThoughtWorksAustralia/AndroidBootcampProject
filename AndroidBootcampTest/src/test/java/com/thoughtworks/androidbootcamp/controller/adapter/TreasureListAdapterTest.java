@@ -3,7 +3,7 @@ package com.thoughtworks.androidbootcamp.controller.adapter;
 import android.app.Activity;
 import android.content.Context;
 
-import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
 
 import org.junit.Assert;

@@ -1,6 +1,6 @@
 package com.thoughtworks.androidbootcamp.model;
 
-import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 
 import org.junit.Test;
 
@@ -30,7 +30,7 @@ public class GameTest {
         Treasure one = mock(Treasure.class);
         Game game = gameWithTreasures(newArrayList(one));
         assertThat(game.getAttemptForTreasure(one), is(nullValue()));
-        Attempt attempt = new Attempt();
+        Attempt attempt = new Attempt(1, 2, "");
         game.recordAttempt(one, attempt);
         assertThat(game.getAttemptForTreasure(one), is(attempt));
     }

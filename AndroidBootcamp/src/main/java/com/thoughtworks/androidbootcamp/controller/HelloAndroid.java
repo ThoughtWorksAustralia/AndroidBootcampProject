@@ -10,11 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.thoughtworks.androidbootcamp.R;
-import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.model.Game;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 
 import java.util.List;
@@ -35,7 +35,6 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
-        mGame = new Game();
 
         treasureLoader = new TreasureLoader(this);
         treasureLoader.copySampleImages();
@@ -75,7 +74,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PROMPT_FOR_PLAYER) {
             if (resultCode == RESULT_OK) {
-                mGame.setPlayer(data.getStringExtra(WhoAmIActivity.PLAYER_DATA));
+                getGame().setPlayer(data.getStringExtra(WhoAmIActivity.PLAYER_DATA));
                 welcomePlayer();
             }
         }
@@ -83,7 +82,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     private void welcomePlayer() {
         TextView welcome = (TextView) findViewById(R.id.welcome_player);
-        welcome.setText("Welcome " + mGame.getPlayer() + "!");
+        welcome.setText("Welcome " + getGame().getPlayer() + "!");
     }
 
     @Override
@@ -104,7 +103,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         // Serialize the current dropdown position.
         outState.putInt(STATE_SELECTED_NAVIGATION_ITEM,
                 getActionBar().getSelectedNavigationIndex());
-        outState.putSerializable(STATE_GAME, mGame);
+        outState.putSerializable(STATE_GAME, getGame());
     }
 
 
@@ -163,14 +162,17 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     }
 
     public void setTreasures(List<Treasure> treasures) {
-        mGame.setTreasures(treasures);
+        getGame().setTreasures(treasures);
     }
 
     public Game getGame() {
+        if (mGame == null) {
+            mGame = new Game();
+        }
         return mGame;
     }
 
     public List<Treasure> getTreasures() {
-        return mGame.getTreasures();
+        return getGame().getTreasures();
     }
 }

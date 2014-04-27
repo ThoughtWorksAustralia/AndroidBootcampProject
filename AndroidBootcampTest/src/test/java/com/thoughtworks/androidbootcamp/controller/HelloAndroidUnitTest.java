@@ -1,6 +1,6 @@
 package com.thoughtworks.androidbootcamp.controller;
 
-import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 
 import org.junit.Before;
 import org.junit.Test;
