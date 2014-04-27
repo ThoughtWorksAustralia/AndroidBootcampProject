@@ -155,11 +155,29 @@ public class TreasureListFragment extends Fragment {
     protected void onTreasureAttempted() {
         // Retrieve geocode info from the taken photo and treasure
         Attempt attempt = createAttemptForPhoto(getCurrentPhotoPath());
-        attempt.setDistance(calculateDistance(getSelectedTreasure(), attempt));
-        getGame().recordAttempt(getSelectedTreasure(), attempt);
+        Treasure thisTreasure = getSelectedTreasure();
+        attempt.setDistance(calculateDistance(thisTreasure, attempt));
+        Game game = getGame();
+        boolean previouslyAttemptedTreasure = game.hasPreviouslyAttemptedTreasure(thisTreasure);
 
-        Toast.makeText(getActivity(), format("Your photo is %s metres from treasure", attempt.getDistance()),
+        int distanceDifference = game.recordAttempt(thisTreasure, attempt);
+
+        String message = format("Your photo is %s metres from treasure", attempt.getDistance());
+        if (previouslyAttemptedTreasure) {
+            message += getMessageForDifference(distanceDifference);
+        }
+        Toast.makeText(getActivity(), message,
                 Toast.LENGTH_LONG).show();
+    }
+
+    protected String getMessageForDifference(int distanceDifference) {
+        if (distanceDifference > 0) {
+            return format("\nYay! This attempt is %s metres closer than your previous best!", distanceDifference);
+        } else if (distanceDifference < 0) {
+            return format("\nSadly, this attempt is %s metres further than your previous best.", -distanceDifference);
+        } else {
+            return "\nThis equals your previous best attempt.";
+        }
     }
 
     protected Attempt createAttemptForPhoto(String photoPath) {

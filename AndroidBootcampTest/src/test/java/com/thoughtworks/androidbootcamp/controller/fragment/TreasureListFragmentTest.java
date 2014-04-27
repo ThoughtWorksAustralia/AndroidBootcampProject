@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -60,6 +61,21 @@ public class TreasureListFragmentTest {
 
         verify(fragment).calculateDistance(treasure, attempt);
         verify(game).recordAttempt(treasure, attempt);
+    }
+
+    @Test
+    public void shouldConstructMessageForCloserAttempt() {
+        assertThat(fragment.getMessageForDifference(5), equalTo("\nYay! This attempt is 5 metres closer than your previous best!"));
+    }
+
+    @Test
+    public void shouldConstructMessageForFurtherAttempt() {
+        assertThat(fragment.getMessageForDifference(-3), equalTo("\nSadly, this attempt is 3 metres further than your previous best."));
+    }
+
+    @Test
+    public void shouldConstructMessageForEqualAttempt() {
+        assertThat(fragment.getMessageForDifference(0), equalTo("\nThis equals your previous best attempt."));
     }
 
 

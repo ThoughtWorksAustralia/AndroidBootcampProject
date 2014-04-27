@@ -43,7 +43,19 @@ public class Game implements Serializable {
         return attempts.get(treasure);
     }
 
-    public void recordAttempt(Treasure treasure, Attempt attempt) {
-        attempts.put(treasure, attempt);
+    public int recordAttempt(Treasure treasure, Attempt attempt) {
+        Attempt currentBestAttempt = getAttemptForTreasure(treasure);
+        int difference = Integer.MAX_VALUE;
+        if (currentBestAttempt != null) {
+            difference = currentBestAttempt.getDistance() - attempt.getDistance();
+        }
+        if (difference >= 0) {
+            attempts.put(treasure, attempt);
+        }
+        return difference;
+    }
+
+    public boolean hasPreviouslyAttemptedTreasure(Treasure treasure) {
+        return (getAttemptForTreasure(treasure) != null);
     }
 }

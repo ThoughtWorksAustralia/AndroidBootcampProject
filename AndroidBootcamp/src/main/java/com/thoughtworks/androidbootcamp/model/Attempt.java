@@ -11,7 +11,7 @@ import static com.google.common.collect.Lists.newArrayList;
 public class Attempt implements Serializable, Locatable {
     //For best performance, implement Parcelable rather than Serializable
     //See http://www.developerphil.com/parcelable-vs-serializable/, for example
-    private int distance;
+    private int distance = Integer.MAX_VALUE;
     private List<Double> coordinates;
     private String photoPath;
 
