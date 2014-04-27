@@ -7,7 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
-import com.thoughtworks.androidbootcamp.Treasure;
+import com.thoughtworks.androidbootcamp.model.Treasure;
+import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
 import com.thoughtworks.androidbootcamp.util.Properties;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public class TreasureListAdapter extends BaseAdapter{
     Context context;
     List<Treasure> treasures;
 
-    public TreasureListAdapter(Context context, List<Treasure> treasures) {
-        this.context = context;
-        this.treasures = treasures;
+    public TreasureListAdapter(HelloAndroid activity) {
+        this.context = activity;
+        this.treasures = activity.getTreasures();
     }
 
     @Override

@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.ListView;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.adapter.HighScoreAdapter;
-import com.thoughtworks.androidbootcamp.controller.adapter.TreasureListAdapter;
 import com.thoughtworks.androidbootcamp.model.Score;
 import com.thoughtworks.androidbootcamp.util.Properties;
 import com.thoughtworks.androidbootcamp.util.TreasureService;
@@ -57,7 +56,7 @@ public class HighScoresFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final GridView gridView = (GridView) view.findViewById(R.id.high_score_list);
+        final ListView listView = (ListView) view.findViewById(R.id.high_score_list);
         new AsyncTask<Void, Void, List<Score>>() {
             @Override
             protected List<Score> doInBackground(Void... voids) {
@@ -68,7 +67,7 @@ public class HighScoresFragment extends Fragment {
             protected void onPostExecute(List<Score> highScores) {
                 mHighScores = highScores;
                 mHighScoreAdapter = new HighScoreAdapter(getActivity(), mHighScores);
-                gridView.setAdapter(mHighScoreAdapter);
+                listView.setAdapter(mHighScoreAdapter);
             }
         }.execute();
     }

@@ -158,5 +158,8 @@ In the Android Bootcamp directory you set up earlier, do:
  * Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ### Resources
+[Google Maps API](http://developer.android.com/google/play-services/maps.html)
+[Obtaining and using the Google Maps API Key](http://eagle.phys.utk.edu/guidry/android/apiKey.html)
+[Setting up Google Play Services](http://developer.android.com/google/play-services/setup.html)
 [Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
 

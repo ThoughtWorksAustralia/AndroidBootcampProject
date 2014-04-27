@@ -25,6 +25,7 @@ android {
 
 dependencies {
     testCompile 'com.android.support:support-v4:19.0.1'
+    testCompile 'com.google.collections:google-collections:1.0'
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'com.squareup:fest-android:1.0.+'

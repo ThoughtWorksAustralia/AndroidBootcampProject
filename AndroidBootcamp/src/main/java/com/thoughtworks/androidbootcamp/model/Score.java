@@ -1,9 +1,13 @@
 package com.thoughtworks.androidbootcamp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by macosgrove on 21/04/2014.
  */
-public class Score {
+public class Score implements Serializable {
+    //For best performance, implement Parcelable rather than Serializable
+    //See http://www.developerphil.com/parcelable-vs-serializable/, for example
     private int gameVersion;
     private String id;
     private String name;

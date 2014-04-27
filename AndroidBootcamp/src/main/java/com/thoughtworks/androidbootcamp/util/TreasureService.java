@@ -1,7 +1,7 @@
 package com.thoughtworks.androidbootcamp.util;
 
-import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.model.Score;
+import com.thoughtworks.androidbootcamp.model.Treasure;
 
 import java.util.List;
 

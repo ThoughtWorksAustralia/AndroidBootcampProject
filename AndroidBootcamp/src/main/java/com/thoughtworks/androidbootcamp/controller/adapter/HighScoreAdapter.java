@@ -4,13 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-import com.thoughtworks.androidbootcamp.Treasure;
 import com.thoughtworks.androidbootcamp.model.Score;
-import com.thoughtworks.androidbootcamp.util.Properties;
 
 import java.util.List;
 
