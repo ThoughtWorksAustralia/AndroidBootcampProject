@@ -147,6 +147,12 @@ In the Android Bootcamp directory you set up earlier, do:
  * Learn about handling data and communicating with a server
  * Retrieve a real list of Treasures from a server
 
+### Resources
+[Processes and Threads](http://developer.android.com/guide/components/processes-and-threads.html)  
+[Retrofit](http://square.github.io/retrofit/)  
+[JSON](http://www.json.org/)  
+[http://www.jsonschema2pojo.org](http://www.jsonschema2pojo.org)  
+
 ## Week 6: Google APIs
 ###Prerequisites:  
 In the Android Bootcamp directory you set up earlier, do:     
