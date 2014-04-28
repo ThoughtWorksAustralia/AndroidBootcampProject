@@ -145,7 +145,8 @@ In the Android Bootcamp directory you set up earlier, do:
 
 ###Goals: 
  * Learn about handling data and communicating with a server
- * Retrieve a real list of Treasures from a server
+ * Retrieve a real list of Treasures from a server  
+ [View the Presentation](http://prezi.com/-svdzfuq7wbi/?utm_campaign=share&utm_medium=copy)  
 
 ### Resources
 [Processes and Threads](http://developer.android.com/guide/components/processes-and-threads.html)  
