@@ -165,7 +165,19 @@ git checkout start-week-5
 
 ###Goals: 
  * Learn about handling data and communicating with a server
- * Retrieve a real list of Treasures from a server
+ * Retrieve a real list of Treasures from a server  
+ [View the Presentation](http://prezi.com/-svdzfuq7wbi/?utm_campaign=share&utm_medium=copy)  
+ [Exercise 1, Exercise 2 pt1: Write a model for the treasures](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/71612668c44226bdff331438274fd99c7041a442)  
+ [Exercise 2 pt2: Writing the client pt 1](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/1f7d13322bd41c009e79f6351875d7bd0b4ddb34)  
+ [Exercise 2 pt3: Writing the client pt 2](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/e095dfbbe51cbd8eb353099b650f28559825c394)  
+ [Exercise 3 pt1: Using the client](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/1f7d13322bd41c009e79f6351875d7bd0b4ddb34)  
+ [Exercise 3 pt2: Fixing the client](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/992ec60bb00ed3469300cb3b295af7df3405e243)  
+
+### Resources
+[Processes and Threads](http://developer.android.com/guide/components/processes-and-threads.html)  
+[Retrofit](http://square.github.io/retrofit/)  
+[JSON](http://www.json.org/)  
+[http://www.jsonschema2pojo.org](http://www.jsonschema2pojo.org)  
 
 ## Week 6: Google APIs
 ###Prerequisites:  
