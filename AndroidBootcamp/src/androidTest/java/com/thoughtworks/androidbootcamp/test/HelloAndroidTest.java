@@ -63,7 +63,7 @@ public class HelloAndroidTest extends ActivityInstrumentationTestCase2<HelloAndr
 
         When.iOpenTheMenuAndSelectItem("Map");
 
-        onView(withId(R.id.map)).check(matches(withEffectiveVisibility(VISIBLE)));
+        onView(withId(R.id.map_container)).check(matches(withEffectiveVisibility(VISIBLE)));
     }
 
 
