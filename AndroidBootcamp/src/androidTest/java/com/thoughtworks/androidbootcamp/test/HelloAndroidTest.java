@@ -11,6 +11,8 @@ import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.typeText;
 import static com.google.android.apps.common.testing.ui.espresso.assertion.ViewAssertions.matches;
+import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
+import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withId;
 import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
@@ -61,7 +63,7 @@ public class HelloAndroidTest extends ActivityInstrumentationTestCase2<HelloAndr
 
         When.iOpenTheMenuAndSelectItem("Map");
 
-        onView(withId(R.id.section_label)).check(matches(withText(containsString("Map:"))));
+        onView(withId(R.id.map)).check(matches(withEffectiveVisibility(VISIBLE)));
     }
 
 

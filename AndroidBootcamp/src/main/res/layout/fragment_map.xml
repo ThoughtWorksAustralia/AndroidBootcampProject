@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.thoughtworks.androidbootcamp.controller.fragment.MapFragment">
+    tools:context="com.thoughtworks.androidbootcamp.controller.fragment.TreasureMapFragment">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/map_heading"
-        style="@style/SectionHeading"/>
-
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/map"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:contentDescription="Map showing location of attempts"
+              android:tag="The Map"
+              android:name="com.google.android.gms.maps.MapFragment"/>
 </LinearLayout>
