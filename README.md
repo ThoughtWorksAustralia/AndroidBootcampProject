@@ -33,12 +33,17 @@ Follow these setup steps before your first session:
 ## Week 1: Hello Android
 ###Prerequisites:
 In the Android Bootcamp directory you set up earlier, do:   
-```git stash``` (if you've made any changes)   
-```git checkout start-week-1```  
+```
+git stash
+git checkout start-week-1
+```
+
   
 ###Goals: 
  * Develop a working "hello world" app and explore its anatomy.
- * Allow the user to enter their name.  
+ * Allow the user to enter their name.
+ 
+###Material:  
 [View the Presentation](http://prezi.com/jibn_vzm9rml/?utm_campaign=share&utm_medium=copy)  
 [Exercise 1: Explore the Lifecycle](https://github.com/macosgrove/AndroidBootcampProject/commit/bd381649f0981bc9d74b90af2389acc364f16914)  
 [Exercise 2: Create a Second Activity Part 1](https://github.com/macosgrove/AndroidBootcampProject/commit/f794de4638037308e2100b5bf73043df89540231),
@@ -59,12 +64,16 @@ In the Android Bootcamp directory you set up earlier, do:
 ## Week 2: BDD with Android
 ###Prerequisites:
 In the Android Bootcamp directory you set up earlier, do:    
-```git stash``` (if you've made any changes)   
-```git checkout start-week-2```  
+```
+git stash
+git checkout start-week-2
+```
 
 ###Goals: 
  * Add a framework for behaviour driven development including a unit test and a functional test
  * Allow the user to view treasures, high scores, and a map page.  
+
+###Material:  
 [View the Presentation](http://prezi.com/78y82u9ld2yy/?utm_campaign=share&utm_medium=copy)  
 [Exercise 1: Create a failing instrument test](https://github.com/macosgrove/AndroidBootcampProject/commit/9f5d25952ac48d4e6c9ea5a0345c1ece2c43ddae)  
 [Exercise 2: Add Espresso to the test Part 1](https://github.com/macosgrove/AndroidBootcampProject/commit/5d137c44445bdcc97bb02a53246a3fe6f44a1915),
@@ -89,12 +98,16 @@ In the Android Bootcamp directory you set up earlier, do:
 ## Week 3: Layout and Design
 ###Prerequisites:
 In the Android Bootcamp directory you set up earlier, do:   
-```git stash``` (if you've made any changes)   
-```git checkout start-week-3```  
+```
+git stash
+git checkout start-week-3
+```
 
 ###Goals: 
  * Layout the welcome screen
  * Display a list of treasures  
+
+###Material:  
 [View the Presentation](http://prezi.com/v9yrnlv2yerk/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
 [Exercise 1 Part 1,2,3: Prettify the welcome screen](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ff34f3207670a7713621aad9814eb367c72cb9e5)  
 [Exercise 1 Part 4,5,6: Further enhancement](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/db5dbfcbf49251a0b4b8debc622b91c9e18bbb99)  
@@ -110,11 +123,14 @@ In the Android Bootcamp directory you set up earlier, do:
 ## Week 4: Using the Camera
 ###Prerequisites:  
 In the Android Bootcamp directory you set up earlier, do:     
-```git stash``` (if you've made any changes)     
-```git checkout start-week-4```    
+```
+git stash
+git checkout start-week-4
+```
+
 The default camera app in Genymotion doesn't capture the GPS details for taken photos so we need to install a different camera (otherwise you can use a real device)
 
-1. Install google play services, Download the appropriate Google Apps for Android zip file for your device from here: http://stackoverflow.com/a/20013322
+1. Install google play services, Download the appropriate Google Apps for Android zip file for your device from here: http://stackoverflow.com/a/20013322. Make sure the version of Google Apps you use matches the Android version on your emulated device. For example [gapps-kk-20140105-signed.zip](http://www.androidfilehost.com/?fid=23311191640114013) works with the Google Nexus 5 4.4.2 Genymotion device.
 2. Drag the downloaded zip onto your running Genymotion emulator
 3. Ignore any errors and restart the emulator
 4. Now using the playstore in your emulator find the App called Camera MX and install it
@@ -124,6 +140,8 @@ The default camera app in Genymotion doesn't capture the GPS details for taken p
  * Find out how to access the Camera app 
  * Take a photo of a found Treasure using the phones built in camera app  
  * Evaluate its proximity to the listed Treasure  
+
+###Material:  
 [View the Presentation](http://prezi.com/cvbktfttlnj4/?utm_campaign=share&utm_medium=copy&rc=ex0share)  
 [Exercise 1: Register a on item click listener for the treasure list](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/2499eac0bdb27ae576bbec69a480ac5080e99e65)  
 [Exercise 2: Use an Intent to create a photo](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/205897d08c958d37e42f908bc1634dcc319a0c08)  
@@ -140,8 +158,10 @@ The default camera app in Genymotion doesn't capture the GPS details for taken p
 ## Week 5: Data and Communication
 ###Prerequisites:  
 In the Android Bootcamp directory you set up earlier, do:     
-```git stash``` (if you've made any changes)      
-```git checkout start-week-5```      
+```
+git stash
+git checkout start-week-5
+```
 
 ###Goals: 
  * Learn about handling data and communicating with a server
@@ -150,16 +170,21 @@ In the Android Bootcamp directory you set up earlier, do:
 ## Week 6: Google APIs
 ###Prerequisites:  
 In the Android Bootcamp directory you set up earlier, do:     
-```git stash``` (if you've made any changes)     
-```git checkout start-week-6```
+```
+git stash
+git checkout start-week-6
+```
+Ensure you've installed Google Apps on your emulated device as per the instructions for [week 4](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject#week-4-using-the-camera).
+
+Open the Android SDK manager (Tools > Android > SDK Manager from Android Studio).
+Check Android Support Repository, Google Play Services and Google Repository from the Extras section at the bottom of the window, and click Install Packages.
 
 ###Goals: 
  * Explore the Google Maps API
  * Complete the game with a map of actual vs found Treasure locations. Generate a score.
 
 ### Resources
+[Installing and Configuring the Google Maps V2 API](https://developers.google.com/maps/documentation/android/start#installing_the_google_maps_android_v2_api)    
 [Google Maps API](http://developer.android.com/google/play-services/maps.html)
-[Obtaining and using the Google Maps API Key](http://eagle.phys.utk.edu/guidry/android/apiKey.html)
-[Setting up Google Play Services](http://developer.android.com/google/play-services/setup.html)
-[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)
+[Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
 

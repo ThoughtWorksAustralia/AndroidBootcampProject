@@ -31,5 +31,6 @@ dependencies {
     compile 'com.squareup.picasso:picasso:+'
     compile 'com.squareup.retrofit:retrofit:1.5.0'
     compile 'com.google.collections:google-collections:1.0'
+    compile 'com.google.android.gms:play-services:4.3.23'
     androidTestCompile fileTree(dir: 'src/androidTest/libs', includes: ['*.jar'])
 }
