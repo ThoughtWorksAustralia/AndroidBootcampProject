@@ -7,21 +7,25 @@ import java.util.List;
 import java.util.Map;
 
 public class Game implements Serializable {
+    private static final int GAME_VERSION = 1;
     //For best performance, implement Parcelable rather than Serializable
     //See http://www.developerphil.com/parcelable-vs-serializable/, for example
-    private String player;
     private Map<Treasure, Attempt> attempts;
+    private Score score;
 
     public Game() {
         attempts = new HashMap<Treasure, Attempt>();
+        score = new Score();
+        score.setGameVersion(GAME_VERSION);
+        score.setScore(0);
     }
 
     public void setPlayer(String player) {
-        this.player = player;
+        score.setName(player);
     }
 
     public String getPlayer() {
-        return player;
+        return score.getName();
     }
 
     public List<Treasure> getTreasures() {
@@ -70,5 +74,20 @@ public class Game implements Serializable {
 
     public boolean hasNoTreasures() {
         return attempts.isEmpty();
+    }
+
+    private int calculateScore() {
+        List<Attempt> attempts = getAttempts();
+        int totalScore = 0;
+        for (Attempt attempt : attempts) {
+            totalScore += Math.max(1000 - attempt.getDistance(), 0);
+        }
+        int treasureCount = getTreasures().size();
+        return treasureCount == 0 ? 0 :  totalScore / treasureCount;
+    }
+
+    public Score getScore() {
+        score.setScore(calculateScore());
+        return score;
     }
 }
