@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
-import com.thoughtworks.androidbootcamp.controller.fragment.TreasureMapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
+import com.thoughtworks.androidbootcamp.controller.fragment.TreasureMapFragment;
+import com.thoughtworks.androidbootcamp.model.Attempt;
 import com.thoughtworks.androidbootcamp.model.Game;
 import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
@@ -174,5 +175,9 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     public List<Treasure> getTreasures() {
         return getGame().getTreasures();
+    }
+
+    public List<Attempt> getAttempts() {
+        return getGame().getAttempts();
     }
 }

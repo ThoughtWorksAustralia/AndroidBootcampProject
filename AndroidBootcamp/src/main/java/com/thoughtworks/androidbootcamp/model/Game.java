@@ -1,9 +1,5 @@
 package com.thoughtworks.androidbootcamp.model;
 
-import android.location.Location;
-
-import com.thoughtworks.androidbootcamp.model.Treasure;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +25,9 @@ public class Game implements Serializable {
     }
 
     public List<Treasure> getTreasures() {
+        //I'd prefer to use Google Collection's newArrayList() here, but that causes
+        //java.lang.IllegalAccessError: Class ref in pre-verified class resolved to unexpected implementation
+        //when running the instrumentation tests
         return new ArrayList<Treasure>(attempts.keySet());
     }
 
@@ -57,5 +56,19 @@ public class Game implements Serializable {
 
     public boolean hasPreviouslyAttemptedTreasure(Treasure treasure) {
         return (getAttemptForTreasure(treasure) != null);
+    }
+
+    public List<Attempt> getAttempts() {
+        List<Attempt> nonNullAttempts = new ArrayList<Attempt>();
+        for (Attempt attempt : attempts.values()) {
+            if (attempt != null) {
+                nonNullAttempts.add(attempt);
+            }
+        }
+        return nonNullAttempts;
+    }
+
+    public boolean hasNoTreasures() {
+        return attempts.isEmpty();
     }
 }

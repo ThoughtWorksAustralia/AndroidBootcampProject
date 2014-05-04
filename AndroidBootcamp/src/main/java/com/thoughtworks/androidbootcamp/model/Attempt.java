@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.lang.String.format;
 
 /**
  * Created by macosgrove on 23/04/2014.
@@ -14,9 +15,11 @@ public class Attempt implements Serializable, Locatable {
     private int distance = Integer.MAX_VALUE;
     private List<Double> coordinates;
     private String photoPath;
+    private int count;
 
-    public Attempt(double latitude, double longitude, String photoPath) {
+    public Attempt(double latitude, double longitude, String photoPath, int count) {
         this.photoPath = photoPath;
+        this.count = count;
         //Longitude is stored first for consistency with Treasure
         coordinates = newArrayList(longitude, latitude);
     }
@@ -44,5 +47,10 @@ public class Attempt implements Serializable, Locatable {
         coordinates.clear();
         coordinates.add(longitude);
         coordinates.add(latitude);
+    }
+
+    @Override
+    public String getName() {
+        return format("Attempt %d: %dm", count, distance);
     }
 }

@@ -165,7 +165,9 @@ git checkout start-week-5
 
 ###Goals: 
  * Learn about handling data and communicating with a server
- * Retrieve a real list of Treasures from a server  
+ * Retrieve a real list of Treasures from a server
+
+ ###Material:   
  [View the Presentation](http://prezi.com/-svdzfuq7wbi/?utm_campaign=share&utm_medium=copy)  
  [Exercise 1, Exercise 2 pt1: Write a model for the treasures](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/71612668c44226bdff331438274fd99c7041a442)  
  [Exercise 2 pt2: Writing the client pt 1](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/1f7d13322bd41c009e79f6351875d7bd0b4ddb34)  
@@ -177,9 +179,10 @@ git checkout start-week-5
 [Processes and Threads](http://developer.android.com/guide/components/processes-and-threads.html)  
 [Retrofit](http://square.github.io/retrofit/)  
 [JSON](http://www.json.org/)  
-[http://www.jsonschema2pojo.org](http://www.jsonschema2pojo.org)  
+[http://www.jsonschema2pojo.org](http://www.jsonschema2pojo.org)
+[Source code for the Android Bootcamp server](https://github.com/ThoughtWorksAustralia/android-bootcamp-rest-server)  
 
-## Week 6: Google APIs
+## Week 6: Playing with Maps
 ###Prerequisites:  
 In the Android Bootcamp directory you set up earlier, do:     
 ```
@@ -193,9 +196,18 @@ Check Android Support Repository, Google Play Services and Google Repository fro
 
 ###Goals: 
  * Explore the Google Maps API
- * Complete the game with a map of actual vs found Treasure locations. Generate a score.
+ * Complete the game with a map of actual and found Treasure locations. Generate a score.
+
+###Material: 
+[View the Presentation]()  
+[Excercise 1: Set up for using Play Services](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ac292303cecba45fd3cb45317abd1a73e68fe48f)  
+NOTE: This exercise causes all Robolectric tests to fail when run on the command line, due to [Robolectric issue 1025!](https://github.com/robolectric/robolectric/issues/1025)  
+[Exercise 2a: Display the map](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d5976f1ade07ad7afd34c6fd6bd91828667eb46a)  
+[Exercise 2b: Nested fragments must be added programmatically!](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/597f5f74e9f5f289faf74fa5cecbc91e9aaac6a4)  
+[Exercise 2c: Connect to Google Play Services and zoom to our current location](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ccb596ecf39c0c415007b856a3436e78a558d0e0)  
 
 ### Resources
+[Google Play Services](http://developer.android.com/google/index.html)  
 [Installing and Configuring the Google Maps V2 API](https://developers.google.com/maps/documentation/android/start#installing_the_google_maps_android_v2_api)    
 [Google Maps API](http://developer.android.com/google/play-services/maps.html)
 [Nested fragments must be added programmatically](http://developer.android.com/about/versions/android-4.2.html#NestedFragments)  
