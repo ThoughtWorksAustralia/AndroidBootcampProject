@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.thoughtworks.androidbootcamp.R;
@@ -26,6 +27,9 @@ import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
 import com.thoughtworks.androidbootcamp.model.Locatable;
 
 import java.util.List;
+
+import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_GREEN;
+import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_YELLOW;
 
 
 public class TreasureMapFragment extends Fragment implements GooglePlayServicesClient.ConnectionCallbacks,
@@ -72,7 +76,10 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
         Toast.makeText(mActivity, "Connected to Play Services", Toast.LENGTH_SHORT).show();
         mMap = mMapFragment.getMap();
         moveToCurrentLocation();
-        setMarkers(mActivity.getAttempts());
+        setMarkers(mActivity.getAttempts(), HUE_GREEN);
+        if (mActivity.hasEnded()) {
+            setMarkers(mActivity.getTreasures(), HUE_YELLOW);
+        }
     }
 
     @Override
@@ -95,10 +102,10 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
         }
     }
 
-    public void setMarkers(List<? extends Locatable> locatables) {
+    public void setMarkers(List<? extends Locatable> locatables, float hue) {
         if (canUseMap()) {
             for (Locatable locatable : locatables) {
-                mMap.addMarker(createMarkerForLocatable(locatable));
+                mMap.addMarker(createMarkerForLocatable(locatable, hue));
             }
         }
     }
@@ -119,14 +126,15 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
         }
     }
 
-    private MarkerOptions createMarkerForLocatable(Locatable locatable) {
+    private MarkerOptions createMarkerForLocatable(Locatable locatable, float hue) {
+        LatLng position = new LatLng(
+                locatable.getLatitude(),
+                locatable.getLongitude());
         MarkerOptions markerOption = new MarkerOptions();
-        markerOption.position(
-                new LatLng(
-                        locatable.getLatitude(),
-                        locatable.getLongitude())
-        );
-        markerOption.title(locatable.getName());
+        markerOption
+                .position(position)
+                .title(locatable.getName())
+                .icon(BitmapDescriptorFactory.defaultMarker(hue));
         return markerOption;
     }
 

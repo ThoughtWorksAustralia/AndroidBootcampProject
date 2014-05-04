@@ -12,12 +12,17 @@ public class Game implements Serializable {
     //See http://www.developerphil.com/parcelable-vs-serializable/, for example
     private Map<Treasure, Attempt> attempts;
     private Score score;
+    private boolean ended = false;
 
     public Game() {
         attempts = new HashMap<Treasure, Attempt>();
         score = new Score();
         score.setGameVersion(GAME_VERSION);
         score.setScore(0);
+    }
+
+    public boolean hasEnded() {
+        return ended;
     }
 
     public void setPlayer(String player) {
@@ -89,5 +94,9 @@ public class Game implements Serializable {
     public Score getScore() {
         score.setScore(calculateScore());
         return score;
+    }
+
+    public void end() {
+        ended = true;
     }
 }

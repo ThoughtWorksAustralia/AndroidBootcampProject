@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
@@ -19,6 +20,8 @@ import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
 
 import java.util.List;
+
+import static java.lang.String.format;
 
 public class HelloAndroid extends Activity implements ActionBar.OnNavigationListener {
 
@@ -82,8 +85,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     }
 
     private void welcomePlayer() {
-        TextView welcome = (TextView) findViewById(R.id.welcome_player);
-        welcome.setText("Welcome " + getGame().getPlayer() + "!");
+        Toast.makeText(this, "Welcome "+getGame().getPlayer(), Toast.LENGTH_LONG);
     }
 
     @Override
@@ -179,5 +181,24 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     public List<Attempt> getAttempts() {
         return getGame().getAttempts();
+    }
+
+    public boolean hasEnded() {
+        return getGame().hasEnded();
+    }
+
+    public void endGame(View view) {
+        getGame().end();
+        Toast.makeText(this, getEndGameMessage(), Toast.LENGTH_LONG).show();
+    }
+
+    protected String getEndGameMessage() {
+        return format("Good game! Your final score was %d. \n" +
+                "Check out the Treasure Map to see where all the treasures are.", getScore());
+    }
+
+
+    public int getScore() {
+        return getGame().getScore().getScore();
     }
 }

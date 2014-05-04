@@ -9,12 +9,13 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -23,6 +24,9 @@ import static org.mockito.Mockito.verify;
 @RunWith(RobolectricTestRunner.class)
 public class HelloAndroidUnitTest {
 
+    public static final int TREASURE_MENU_ITEM = 0;
+    public static final int HIGH_SCORES_MENU_ITEM = 1;
+    public static final int MAP_MENU_ITEM = 2;
     HelloAndroid activity;
 
     @Before
@@ -32,19 +36,19 @@ public class HelloAndroidUnitTest {
 
     @Test
     public void shouldShowTreasureListWhenFirstSpinnerItemSelected() throws Exception {
-        activity.onNavigationItemSelected(0, 0);
+        activity.onNavigationItemSelected(TREASURE_MENU_ITEM, 0);
         verify(activity).showTreasureList();
     }
 
     @Test
     public void shouldShowHighScoresWhenSecondSpinnerItemSelected() throws Exception {
-        activity.onNavigationItemSelected(1, 0);
+        activity.onNavigationItemSelected(HIGH_SCORES_MENU_ITEM, 0);
         verify(activity).showHighScores();
     }
 
     @Test
     public void shouldShowMapWhenThirdSpinnerItemSelected() throws Exception {
-        activity.onNavigationItemSelected(2, 0);
+        activity.onNavigationItemSelected(MAP_MENU_ITEM, 0);
         verify(activity).showMap();
     }
 
@@ -66,6 +70,13 @@ public class HelloAndroidUnitTest {
         List<Treasure> actual = activity.getTreasures();
         assertThat(actual.size(), is(1));
         assertThat(actual.get(0), is(treasure));
+    }
+
+    @Test
+    public void shouldCreateEndGameMessage() throws Exception {
+        doReturn(3363).when(activity).getScore();
+
+        assertThat(activity.getEndGameMessage(), containsString("Good game! Your final score was 3363."));
     }
 
 

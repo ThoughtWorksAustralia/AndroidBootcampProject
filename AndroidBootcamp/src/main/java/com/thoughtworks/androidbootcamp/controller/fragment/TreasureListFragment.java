@@ -145,7 +145,7 @@ public class TreasureListFragment extends Fragment {
             // tell camera app when to put the photo
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
 
-            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            if (intent.resolveActivity(mActivity.getPackageManager()) != null) {
                 // ask to use the camera
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
@@ -167,10 +167,14 @@ public class TreasureListFragment extends Fragment {
 
     protected void onTreasureAttempted() {
         // Retrieve geocode info from the taken photo and treasure
+        Game game = getGame();
+        if (game.hasEnded()) {
+            Toast.makeText(mActivity, "Too late for that now!", Toast.LENGTH_LONG).show();
+            return;
+        }
         Attempt attempt = createAttemptForPhoto(getCurrentPhotoPath());
         Treasure thisTreasure = getSelectedTreasure();
         attempt.setDistance(calculateDistance(thisTreasure, attempt));
-        Game game = getGame();
         boolean previouslyAttemptedTreasure = game.hasPreviouslyAttemptedTreasure(thisTreasure);
 
         int distanceDifference = game.recordAttempt(thisTreasure, attempt);
