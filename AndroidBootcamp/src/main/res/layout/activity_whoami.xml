@@ -28,7 +28,7 @@
         android:text="@string/ok"
         android:onClick="returnPlayer"
         android:layout_alignParentBottom="true"
-        style="?android:attr/buttonBarStyle"/>
+        style="@style/Button"/>
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"

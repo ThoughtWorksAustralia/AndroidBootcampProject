@@ -13,5 +13,6 @@
     <string name="scores_heading">High Scores:</string>
     <string name="map_heading">Map:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="end_game">Finish the Game!</string>
 
 </resources>

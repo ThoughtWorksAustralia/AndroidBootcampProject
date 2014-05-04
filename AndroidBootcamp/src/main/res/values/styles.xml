@@ -15,6 +15,11 @@
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
     </style>
+    <style name="Button">
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/highlight</item>
+        <item name="android:background">@color/white</item>
+    </style>
     <style name="SectionHeading">
         <item name="android:textSize">@dimen/heading_text_size</item>
         <item name="android:textColor">@color/highlight</item>

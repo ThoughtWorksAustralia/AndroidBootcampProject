@@ -1,23 +1,51 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment">
-
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment">
+    <Button
+        style="@style/Button"
+        android:id="@+id/end_game_button"
         android:layout_height="wrap_content"
-        android:text="@string/scores_heading"
-        style="@style/SectionHeading"/>
-
-    <ListView
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/high_score_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:verticalSpacing="@dimen/default_inter_row_spacing"
+        android:text="@string/end_game"
+        android:onClick="endGame"
+        android:layout_alignParentBottom="true"
         />
-</LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="?android:attr/dividerHorizontal"
+        android:layout_above="@id/end_game_button"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/divider"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scores_heading"
+            style="@style/SectionHeading"/>
+
+        <ListView
+            android:id="@+id/high_score_list"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/high_score_list_color"
+            android:divider="@color/high_score_list_color"
+            android:dividerHeight="@dimen/high_score_inter_row_spacing"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
