@@ -13,6 +13,7 @@ import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.MapFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
+import com.thoughtworks.androidbootcamp.model.Attempt;
 import com.thoughtworks.androidbootcamp.model.Game;
 import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
@@ -145,7 +146,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     protected void showMap() {
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, new TreasureMapFragment())
+                .replace(R.id.container, new MapFragment())
                 .commit();
     }
 
