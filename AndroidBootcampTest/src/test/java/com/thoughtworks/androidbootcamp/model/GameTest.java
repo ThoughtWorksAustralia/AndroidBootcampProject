@@ -3,12 +3,14 @@ package com.thoughtworks.androidbootcamp.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -90,8 +92,7 @@ public class GameTest {
         game.recordAttempt(treasure1, attempt1);
         game.recordAttempt(treasure2, attempt2);
 
-        List<Attempt> expectedAttempts = newArrayList(attempt1, attempt2);
-        assertThat(game.getAttempts(), equalTo(expectedAttempts));
+        assertThat(game.getAttempts(), hasItems(attempt1, attempt2));
     }
 
     @Test
@@ -117,6 +118,54 @@ public class GameTest {
         Game game = new Game();
         game.setTreasures(newArrayList(treasure));
         assertFalse(game.hasNoTreasures());
+    }
+
+    @Test
+    public void shouldCalculateScoreBasedOnDistances() {
+        Game game = gameWithAttemptsAtDistances(newArrayList(150));
+        assertThat(game.getScore().getScore(), is(1000 - 150));
+    }
+
+    @Test
+    public void shouldScoreZeroWhenDistanceIsGreaterThan1000() {
+        Game game = gameWithAttemptsAtDistances(newArrayList(1500));
+        assertThat(game.getScore().getScore(), is(0));
+    }
+
+    @Test
+    public void shouldScoreZeroWhenTreasureIsNotAttempted() {
+        ArrayList<Integer> distances = newArrayList();
+        distances.add(null);
+        Game game = gameWithAttemptsAtDistances(distances);
+        assertThat(game.getScore().getScore(), is(0));
+    }
+
+    @Test
+    public void shouldScoreRoundedAverageOverAllTreasures() {
+        Game game = gameWithAttemptsAtDistances(newArrayList(500, null, 1000));
+        assertThat(game.getScore().getScore(), is(166));
+    }
+
+    @Test
+    public void shouldScoreZeroWhenNoTreasures() {
+        ArrayList<Integer> emptyList = newArrayList();
+        Game game = gameWithAttemptsAtDistances(emptyList);
+        assertThat(game.getScore().getScore(), is(0));
+    }
+
+    private Game gameWithAttemptsAtDistances(ArrayList<Integer> distances) {
+        Game game = new Game();
+        int count = 0;
+        for (Integer distance: distances) {
+            Treasure treasure = mock(Treasure.class);
+            Attempt attempt = null;
+            if (distance != null) {
+                attempt = new Attempt(1, 1, "", ++count);
+                attempt.setDistance(distance);
+            }
+            game.recordAttempt(treasure, attempt);
+        }
+        return game;
     }
 
     private Game gameWithTreasures(List<Treasure> treasures) {
