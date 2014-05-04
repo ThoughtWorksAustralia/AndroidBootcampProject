@@ -15,6 +15,7 @@ import java.io.IOException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -30,15 +31,18 @@ import static org.mockito.Mockito.when;
 public class TreasureListFragmentTest {
 
     private TreasureListFragment fragment;
+    private Treasure treasure;
 
     @Before
     public void setUp() {
         fragment = spy(new TreasureListFragment());
+        treasure = mock(Treasure.class);
+        when(fragment.getSelectedTreasure()).thenReturn(treasure);
     }
 
     @Test
     public void shouldCalculateDistance() {
-        Attempt attempt = new Attempt(-33.866365, 151.210816, "");
+        Attempt attempt = new Attempt(-33.866365, 151.210816, "", 0);
         Treasure treasure = new Treasure();
         treasure.setCoordinates(-33.866441, 151.211395);
         int distance = fragment.calculateDistance(attempt, treasure);
@@ -49,18 +53,25 @@ public class TreasureListFragmentTest {
 
     @Test
     public void shouldRecordAttempt() throws IOException {
-        Attempt attempt = new Attempt(-33.866365, 151.210816, "the photo path");
-        Treasure treasure = mock(Treasure.class);
+        Attempt attempt = new Attempt(-33.866365, 151.210816, "the photo path", 0);
         Game game = mock(Game.class);
         when(fragment.getCurrentPhotoPath()).thenReturn("the photo path");
         when(fragment.createAttemptForPhoto("the photo path")).thenReturn(attempt);
         when(fragment.getGame()).thenReturn(game);
-        when(fragment.getSelectedTreasure()).thenReturn(treasure);
 
         fragment.onTreasureAttempted();
 
         verify(fragment).calculateDistance(treasure, attempt);
         verify(game).recordAttempt(treasure, attempt);
+    }
+
+    @Test
+    public void shouldIncrementAttemptCounterWhenCreatingAttempt() {
+        Attempt attempt1 = fragment.createAttemptForPhoto("one");
+        Attempt attempt2 = fragment.createAttemptForPhoto("two");
+
+        assertThat(attempt1.getName(), startsWith("Attempt 1:"));
+        assertThat(attempt2.getName(), startsWith("Attempt 2:"));
     }
 
     @Test

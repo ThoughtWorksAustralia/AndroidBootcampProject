@@ -145,7 +145,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     protected void showMap() {
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, new MapFragment())
+                .replace(R.id.container, new TreasureMapFragment())
                 .commit();
     }
 
@@ -174,5 +174,9 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
 
     public List<Treasure> getTreasures() {
         return getGame().getTreasures();
+    }
+
+    public List<Attempt> getAttempts() {
+        return getGame().getAttempts();
     }
 }

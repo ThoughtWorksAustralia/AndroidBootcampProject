@@ -48,14 +48,15 @@ public class TreasureListFragment extends Fragment {
     private static final String TAG = "TreasureListFragment";
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
-    TreasureService treasureService;
+    private TreasureService mTreasureService;
 
     private String mCurrentPhotoPath;
     private Treasure mSelectedTreasure;
 
     private TreasureListAdapter mTreasureListAdapter;
-    List<Treasure> treasureList;
     private Game mGame;
+    private int mAttemptCount = 0;
+    private HelloAndroid mActivity;
 
     public TreasureListFragment() {
         // Required empty public constructor
@@ -76,10 +77,12 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        treasureService = new RestAdapter.Builder()
+        mTreasureService = new RestAdapter.Builder()
                 .setEndpoint(Properties.SERVICE_URL)
                 .build()
                 .create(TreasureService.class);
+        mActivity = (HelloAndroid) getActivity();
+        mGame = mActivity.getGame();
     }
 
     @Override
@@ -100,21 +103,31 @@ public class TreasureListFragment extends Fragment {
                 takePhoto();
             }
         });
+        if (mGame.hasNoTreasures()) {
+            retrieveTreasuresFromServer(gridView);
+        } else {
+            setListAdapter(gridView);
+        }
+    }
+
+    private void retrieveTreasuresFromServer(final GridView gridView) {
         new AsyncTask<Void, Void, List<Treasure>>() {
             @Override
             protected List<Treasure> doInBackground(Void... voids) {
-                return treasureService.listTreasures();
+                return mTreasureService.listTreasures();
             }
 
             @Override
             protected void onPostExecute(List<Treasure> treasures) {
-                HelloAndroid activity = (HelloAndroid) getActivity();
-                mGame = activity.getGame();
                 mGame.setTreasures(treasures);
-                mTreasureListAdapter = new TreasureListAdapter(activity);
-                gridView.setAdapter(mTreasureListAdapter);
+                setListAdapter(gridView);
             }
         }.execute();
+    }
+
+    private void setListAdapter(GridView gridView) {
+        mTreasureListAdapter = new TreasureListAdapter(mActivity);
+        gridView.setAdapter(mTreasureListAdapter);
     }
 
     public void takePhoto() {
@@ -190,7 +203,7 @@ public class TreasureListFragment extends Fragment {
             float latlng[] = new float[2];
             exifInterface.getLatLong(latlng);
 
-            return new Attempt(latlng[0], latlng[1], photoPath);
+            return new Attempt(latlng[0], latlng[1], photoPath, ++mAttemptCount);
 
         } catch (IOException e) {
             Log.e(TAG, "Unable to retrieve exif tags from image", e);
