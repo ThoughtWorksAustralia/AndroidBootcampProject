@@ -1,7 +1,6 @@
 package com.thoughtworks.androidbootcamp.controller.fragment;
 
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.location.Location;
@@ -21,7 +20,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.thoughtworks.androidbootcamp.R;
+import com.thoughtworks.androidbootcamp.controller.HelloAndroid;
+import com.thoughtworks.androidbootcamp.model.Locatable;
+
+import java.util.List;
 
 
 public class TreasureMapFragment extends Fragment implements GooglePlayServicesClient.ConnectionCallbacks,
@@ -32,11 +36,12 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
     private GoogleMap mMap;
     private LocationClient mLocationClient;
     private MapFragment mMapFragment;
+    private HelloAndroid mActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Activity mActivity = this.getActivity();
+        mActivity = (HelloAndroid) this.getActivity();
         mLocationClient = new LocationClient(mActivity, this, this);
     }
 
@@ -64,9 +69,10 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
 
     @Override
     public void onConnected(Bundle bundle) {
-        Toast.makeText(getActivity(), "Connected to Play Services", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, "Connected to Play Services", Toast.LENGTH_SHORT).show();
         mMap = mMapFragment.getMap();
         moveToCurrentLocation();
+        setMarkers(mActivity.getAttempts());
     }
 
     @Override
@@ -77,15 +83,23 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
 
     @Override
     public void onDisconnected() {
-        Toast.makeText(getActivity(), "Disconnected from Play Services", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, "Disconnected from Play Services", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
-            Toast.makeText(getActivity(), "Connected to Play Services failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity, "Connected to Play Services failed", Toast.LENGTH_SHORT).show();
             //TODO: Display an error message and retry
             //See https://developer.android.com/training/location/retrieve-current.html
+        }
+    }
+
+    public void setMarkers(List<? extends Locatable> locatables) {
+        if (canUseMap()) {
+            for (Locatable locatable : locatables) {
+                mMap.addMarker(createMarkerForLocatable(locatable));
+            }
         }
     }
 
@@ -105,8 +119,19 @@ public class TreasureMapFragment extends Fragment implements GooglePlayServicesC
         }
     }
 
+    private MarkerOptions createMarkerForLocatable(Locatable locatable) {
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.position(
+                new LatLng(
+                        locatable.getLatitude(),
+                        locatable.getLongitude())
+        );
+        markerOption.title(locatable.getName());
+        return markerOption;
+    }
+
     private boolean servicesConnected() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity());
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(mActivity);
         if (ConnectionResult.SUCCESS == resultCode) {
             Log.d("Location Updates", "Google Play services is available.");
             return true;
