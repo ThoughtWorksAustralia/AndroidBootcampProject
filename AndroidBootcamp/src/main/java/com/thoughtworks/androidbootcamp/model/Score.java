@@ -13,6 +13,12 @@ public class Score implements Serializable {
     private String name;
     private int score;
 
+    public Score(String name, int score, int gameVersion) {
+        this.name = name;
+        this.score = score;
+        this.gameVersion = gameVersion;
+    }
+
     public int getGameVersion() {
         return gameVersion;
     }

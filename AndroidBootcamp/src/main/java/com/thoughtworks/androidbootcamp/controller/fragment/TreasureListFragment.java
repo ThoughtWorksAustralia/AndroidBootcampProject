@@ -27,14 +27,11 @@ import com.thoughtworks.androidbootcamp.model.Game;
 import com.thoughtworks.androidbootcamp.model.Locatable;
 import com.thoughtworks.androidbootcamp.model.Treasure;
 import com.thoughtworks.androidbootcamp.util.FileUtils;
-import com.thoughtworks.androidbootcamp.util.Properties;
 import com.thoughtworks.androidbootcamp.util.TreasureService;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
-import retrofit.RestAdapter;
 
 import static java.lang.Math.round;
 import static java.lang.String.format;
@@ -77,11 +74,8 @@ public class TreasureListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTreasureService = new RestAdapter.Builder()
-                .setEndpoint(Properties.SERVICE_URL)
-                .build()
-                .create(TreasureService.class);
         mActivity = (HelloAndroid) getActivity();
+        mTreasureService = mActivity.getTreasureService();
         mGame = mActivity.getGame();
     }
 

@@ -4,22 +4,34 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.GsonBuilder;
 import com.thoughtworks.androidbootcamp.R;
 import com.thoughtworks.androidbootcamp.controller.fragment.HighScoresFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureListFragment;
 import com.thoughtworks.androidbootcamp.controller.fragment.TreasureMapFragment;
 import com.thoughtworks.androidbootcamp.model.Attempt;
 import com.thoughtworks.androidbootcamp.model.Game;
+import com.thoughtworks.androidbootcamp.model.Score;
 import com.thoughtworks.androidbootcamp.model.Treasure;
+import com.thoughtworks.androidbootcamp.util.Properties;
 import com.thoughtworks.androidbootcamp.util.TreasureLoader;
+import com.thoughtworks.androidbootcamp.util.TreasureService;
 
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.converter.GsonConverter;
 
 import static java.lang.String.format;
 
@@ -32,16 +44,22 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
     private static final String STATE_GAME = "game_state";
     private static final int PROMPT_FOR_PLAYER = 1000;
+    private static final String TAG = "HelloAndroid activity";
     private Game mGame;
-    private TreasureLoader treasureLoader;
+    private TreasureService mTreasureService;
+
+    public TreasureService getTreasureService() {
+        return mTreasureService;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
 
-        treasureLoader = new TreasureLoader(this);
+        TreasureLoader treasureLoader = new TreasureLoader(this);
         treasureLoader.copySampleImages();
+        mTreasureService = createTreasureService();
 
         // Set up the action bar to show a dropdown list.
         final android.app.ActionBar actionBar = getActionBar();
@@ -66,7 +84,21 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
         }
     }
 
+    protected TreasureService createTreasureService() {
+        return new RestAdapter.Builder()
+                .setEndpoint(Properties.SERVICE_URL)
+                .setConverter(createGsonConverter())
+                .build()
+                .create(TreasureService.class);
+    }
 
+    protected GsonConverter createGsonConverter() {
+        return new GsonConverter(
+                new GsonBuilder()
+                        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                        .create()
+        );
+    }
 
     private void promptForPlayer() {
         Intent i = new Intent(this, WhoAmIActivity.class);
@@ -85,7 +117,7 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     }
 
     private void welcomePlayer() {
-        Toast.makeText(this, "Welcome "+getGame().getPlayer(), Toast.LENGTH_LONG);
+        Toast.makeText(this, "Welcome " + getGame().getPlayer(), Toast.LENGTH_LONG);
     }
 
     @Override
@@ -190,15 +222,35 @@ public class HelloAndroid extends Activity implements ActionBar.OnNavigationList
     public void endGame(View view) {
         getGame().end();
         Toast.makeText(this, getEndGameMessage(), Toast.LENGTH_LONG).show();
+        sendScoreToServer();
     }
 
     protected String getEndGameMessage() {
-        return format("Good game! Your final score was %d. \n" +
-                "Check out the Treasure Map to see where all the treasures are.", getScore());
+        // Should use string resources not hardcoded strings for any string that may
+        // one day need translation - ie anything appearing in the UI
+        return format(getResources().getString(R.string.end_game_message), getScore());
     }
 
+    private void sendScoreToServer() {
+        // This is an example of how to use Retrofit's callback for asynchronous server calls,
+        // instead of using an Async task
+        Callback<Score> callback = new Callback<Score>() {
+            @Override
+            public void success(Score score, Response response) {
+                showHighScores();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Failure posting score");
+                error.printStackTrace();
+            }
+        };
+        mTreasureService.postScore(getGame().getScore(), callback);
+    }
 
     public int getScore() {
         return getGame().getScore().getScore();
     }
+
 }

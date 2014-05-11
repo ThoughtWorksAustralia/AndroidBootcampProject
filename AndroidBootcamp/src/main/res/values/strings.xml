@@ -14,5 +14,8 @@
     <string name="map_heading">Map:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="end_game">Finish the Game!</string>
+    <string name="end_game_message">
+        Good game! Your final score was %d. \nCheck out the Treasure Map to see where all the treasures are.
+    </string>
 
 </resources>

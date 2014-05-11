@@ -16,9 +16,7 @@ public class Game implements Serializable {
 
     public Game() {
         attempts = new HashMap<Treasure, Attempt>();
-        score = new Score();
-        score.setGameVersion(GAME_VERSION);
-        score.setScore(0);
+        score = new Score("", 0, GAME_VERSION);
     }
 
     public boolean hasEnded() {

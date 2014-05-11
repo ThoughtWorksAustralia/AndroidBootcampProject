@@ -1,5 +1,6 @@
 package com.thoughtworks.androidbootcamp.controller;
 
+import com.thoughtworks.androidbootcamp.model.Score;
 import com.thoughtworks.androidbootcamp.model.Treasure;
 
 import org.junit.Before;
@@ -9,12 +10,17 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
+
+import retrofit.converter.GsonConverter;
+import retrofit.mime.TypedOutput;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -77,6 +83,18 @@ public class HelloAndroidUnitTest {
         doReturn(3363).when(activity).getScore();
 
         assertThat(activity.getEndGameMessage(), containsString("Good game! Your final score was 3363."));
+    }
+
+    @Test
+    public void shouldConstructScoreJsonViaGsonConverter() throws Exception {
+        Score score = new Score("Hermione", 254, 3);
+        GsonConverter converter = activity.createGsonConverter();
+        TypedOutput typedOutput = converter.toBody(score);
+        ByteArrayOutputStream os = new ByteArrayOutputStream(256);
+        typedOutput.writeTo(os);
+        String actualScoreJson = os.toString("UTF-8");
+        String expectedScoreJson = "{\"game_version\":3,\"name\":\"Hermione\",\"score\":254}";
+        assertThat(actualScoreJson, equalTo(expectedScoreJson));
     }
 
 
