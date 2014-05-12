@@ -5,7 +5,7 @@ AndroidBootcampProject
 To teach Java programmers the basics of Android development using Agile best practices, by incrementally developing a small game over a period of six weeks.
 
 ## The App: Treasure Hunt
-A single player game. The app supplies a list of photos of 'treasures' in your local area, with hints on how to find them. Your job is to run (or stroll) around the area to find each treasure and take a photo of it. Points are awarded according to how many treasures you can locate, how long you take, and how close you were to the original photo location.
+A single player game. The app supplies a list of photos of 'treasures' in your local area, with hints on how to find them. Your job is to run (or stroll) around the area to find each treasure and take a photo of it. Points are awarded according to how many treasures you can locate and how close you were to the original photo location.
 
 ## Pre-Bootcamp Preparation
 
@@ -208,7 +208,13 @@ NOTE: This exercise causes all Robolectric tests to fail when run on the command
 [Exercise 3: Map attempts](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ac292303cecba45fd3cb45317abd1a73e68fe48f)  
 [Exercise 4a: Add Finish Game button to High Scores fragment, and improve styling.](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/50bcb05014be2f4cbf9688796d1c5a2f373d95a8)  
 [Exercise 4b: Finish the game, and show Treasures on the map once it has ended.](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/a9cffdbe57fd4740be6db7e82a520be90f3dc21d)  
-[Exercise 4c: Send player's score to the server, and refresh the high scores](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/56714ec52b4f7d6e2f91a86e7940aea281f8721b)  
+[Exercise 4c: Send player's score to the server, and refresh the high scores](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/56714ec52b4f7d6e2f91a86e7940aea281f8721b) 
+
+##### Let's explore
+[Using image thumbnails as map markers](https://developers.google.com/maps/documentation/android/marker#customize_the_marker_image)  
+[Clustering markers](https://developers.google.com/maps/documentation/android/utility/marker-clustering)  
+[Zooming to a collection of markers](http://stackoverflow.com/questions/14636118/android-set-goolgemap-bounds-from-from-database-of-points)  
+[Drawing a walking route](http://stackoverflow.com/questions/14444228/android-how-to-draw-route-directions-google-maps-api-v2-from-current-location-t)   
 
 ### Resources
 [Google Play Services](http://developer.android.com/google/index.html)  
@@ -216,4 +222,5 @@ NOTE: This exercise causes all Robolectric tests to fail when run on the command
 [Google Maps API](http://developer.android.com/google/play-services/maps.html)
 [Nested fragments must be added programmatically](http://developer.android.com/about/versions/android-4.2.html#NestedFragments)  
 [Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
+[Sending high score to server - Retrofit with Custom GSON Converter and Callback](http://square.github.io/retrofit/)    
 
