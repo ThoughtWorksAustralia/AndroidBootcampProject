@@ -199,7 +199,7 @@ Check Android Support Repository, Google Play Services and Google Repository fro
  * Complete the game with a map of actual and found Treasure locations. Generate a score.
 
 ###Material: 
-[View the Presentation]()  
+[View the Presentation](http://prezi.com/podoewjswxxz/android-bootcamp-week-6/)    
 [Excercise 1: Set up for using Play Services](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ac292303cecba45fd3cb45317abd1a73e68fe48f)  
 NOTE: This exercise causes all Robolectric tests to fail when run on the command line, due to [Robolectric issue 1025!](https://github.com/robolectric/robolectric/issues/1025)  
 [Exercise 2a: Display the map](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d5976f1ade07ad7afd34c6fd6bd91828667eb46a)  
