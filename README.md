@@ -205,7 +205,7 @@ NOTE: This exercise causes all Robolectric tests to fail when run on the command
 [Exercise 2a: Display the map](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/d5976f1ade07ad7afd34c6fd6bd91828667eb46a)  
 [Exercise 2b: Nested fragments must be added programmatically!](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/597f5f74e9f5f289faf74fa5cecbc91e9aaac6a4)  
 [Exercise 2c: Connect to Google Play Services and zoom to our current location](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ccb596ecf39c0c415007b856a3436e78a558d0e0)  
-[Exercise 3: Map attempts](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ac292303cecba45fd3cb45317abd1a73e68fe48f)  
+[Exercise 3: Map attempts](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/ab2200d177f207d78815908511bfde8dfb4de50f)  
 [Exercise 4a: Add Finish Game button to High Scores fragment, and improve styling.](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/50bcb05014be2f4cbf9688796d1c5a2f373d95a8)  
 [Exercise 4b: Finish the game, and show Treasures on the map once it has ended.](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/a9cffdbe57fd4740be6db7e82a520be90f3dc21d)  
 [Exercise 4c: Send player's score to the server, and refresh the high scores](https://github.com/ThoughtWorksAustralia/AndroidBootcampProject/commit/56714ec52b4f7d6e2f91a86e7940aea281f8721b) 
