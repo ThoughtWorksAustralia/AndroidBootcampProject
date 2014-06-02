@@ -219,7 +219,7 @@ NOTE: This exercise causes all Robolectric tests to fail when run on the command
 ### Resources
 [Google Play Services](http://developer.android.com/google/index.html)  
 [Installing and Configuring the Google Maps V2 API](https://developers.google.com/maps/documentation/android/start#installing_the_google_maps_android_v2_api)    
-[Google Maps API](http://developer.android.com/google/play-services/maps.html)
+[Google Maps API](http://developer.android.com/google/play-services/maps.html)  
 [Nested fragments must be added programmatically](http://developer.android.com/about/versions/android-4.2.html#NestedFragments)  
 [Maps in the Genymotion emulator](http://www.webupd8.org/2013/11/android-x86-emulator-genymotion-20.html)  
 [Sending high score to server - Retrofit with Custom GSON Converter and Callback](http://square.github.io/retrofit/)    
